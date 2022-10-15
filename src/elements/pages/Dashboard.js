@@ -16,7 +16,7 @@ class Dashboard extends Component {
     }
 
     getEmpleados = () => {
-        axios.get(url).then(res => this.setState({ empleados: res.data }))
+        axios.get('http://127.0.0.1:8000/crear_empleado/').then(res => this.setState({ empleados: res.data }))
     }
 
     resetState = () => {
@@ -28,7 +28,7 @@ class Dashboard extends Component {
             <Container style={{ marginTop: "20px" }}>
                 <Row>
                     <Col>
-                        <ListaEmpleados empleados={this.state.students} resetState={this.resetState}/>
+                        <ListaEmpleados empleados={this.state.empleados} resetState={this.resetState}/>
                     </Col>
                 </Row>
                 <Row>

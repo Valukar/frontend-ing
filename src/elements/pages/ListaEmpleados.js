@@ -27,7 +27,7 @@ class ListaEmpleados extends Component {
                         </tr>
                     ) : (
                         empleados.map(empleado => (
-                            <tr key={empleado.pk}>
+                            <tr key={empleado.id}>
                                 <td>{empleado.nombre}</td>
                                 <td>{empleado.telefono}</td>
                                 <td>{empleado.tipoContrato}</td>
@@ -35,7 +35,7 @@ class ListaEmpleados extends Component {
                                 <td align="center">
                                     <NuevoEmpleadoModal create={false} empleado={empleado} resetState={this.props.resetState}/>
                                     &nbsp;&nbsp;
-                                    <ConfirmarEliminacionModal pk={empleado.pk} resetState={this.props.resetState}/> 
+                                    <ConfirmarEliminacionModal id={empleado.id} resetState={this.props.resetState}/> 
                                 </td>
                             </tr>
                         ))

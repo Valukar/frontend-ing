@@ -14,8 +14,8 @@ class ConfirmarEliminacionModal extends Component {
         }))
     }
 
-    eliminarEmpleado = pk => {
-        axios.delete(url + pk).then(() => {
+    eliminarEmpleado = id => {
+        axios.delete('http://127.0.0.1:8000/crear_empleado/' + id).then(() => {
             this.props.resetState()
             this.toggle()
         })
@@ -31,7 +31,7 @@ class ConfirmarEliminacionModal extends Component {
                     </ModalHeader> 
                     <ModalFooter>
                         <Button type="button" onClick={() => this.toggle()}>Cancelar</Button>
-                        <Button type="button" color="primary" onClick={() => this.eliminarEmpleado(this.props.pk)}>Aceptar</Button>
+                        <Button type="button" color="primary" onClick={() => this.eliminarEmpleado(this.props.id)}>Aceptar</Button>
                     </ModalFooter>
                 </Modal>
             </Fragment>

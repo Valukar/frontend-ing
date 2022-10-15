@@ -4,7 +4,7 @@ import axios from 'axios'
 
 class NuevoEmpleado extends React.Component {
     state = {
-        pk: 0,
+        id: 0,
         nombre: "",
         telefono: "",
         tipoContrato: "",
@@ -13,7 +13,7 @@ class NuevoEmpleado extends React.Component {
 
 componentDidMount() {
     if (this.props.empleado) {
-        const { pk, nombre, telefono, tipoContrato, estadoLaboral } = this.props.empleado;
+        const { id, nombre, telefono, tipoContrato, estadoLaboral } = this.props.empleado;
         this.setState({ pk, nombre, telefono, tipoContrato, estadoLaboral })
     }
 }
@@ -24,7 +24,7 @@ onChange = e => {
 
 crearEmpleado = e => {
     e.preventDefault();
-    axios.post(url, this.state).then(() => {
+    axios.post('http://127.0.0.1:8000/crear_empleado/', this.state).then(() => {
         this.props.resetState()
         this.props.toggle()
     })
@@ -32,7 +32,7 @@ crearEmpleado = e => {
 
 editarEmpleado = e => {
     e.preventDefault();
-    axios.put(url + this.state.pk, this.state).then(() => {
+    axios.put('http://127.0.0.1:8000/crear_empleado/' + this.state.id, this.state).then(() => {
         this.props.resetState()
         this.props.toggle()
     })
@@ -61,7 +61,7 @@ render() {
                 <Label for="estadoLaboral">Estado Laboral:</Label>
                 <Input type="text" name="estadoLaboral" onChange={this.onChange} value={this.valorDefault(this.state.estadoLaboral)}/>
             </FormGroup>
-            <Button>Agregar Empleado</Button>
+            <Button>Confirmar</Button>
         </Form>
     )
 }
