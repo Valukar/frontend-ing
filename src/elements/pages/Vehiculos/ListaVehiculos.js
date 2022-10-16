@@ -20,7 +20,7 @@ class ListaVehiculos extends Component {
                     {!vehiculos || vehiculos.length <= 0 ? (
                         <tr>
                             <td colSpan="6" align="center">
-                                <b>No ve</b>
+                                <b>No camionetas.</b>
                             </td>
                         </tr>
                     ) : (
