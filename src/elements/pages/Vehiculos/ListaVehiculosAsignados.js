@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { Table } from 'reactstrap'
+import EliminarVehiculoAsignadoModal from './EliminarVehiculoAsignadoModal'
+import ModificarFechaMantencionModal from './ModificarFechaMantencionModal'
 
 class ListaVehiculosAsignados extends Component {
     render() {
@@ -27,7 +29,11 @@ class ListaVehiculosAsignados extends Component {
                                 <td>{vehiculoAsignado.fechaRevision}</td>
                                 <td>{vehiculoAsignado.rutRepartidor}</td>
                                 <td align="center"> </td>
+                                    <ModificarFechaMantencionModal create={false} empleado={empleado} resetState={this.props.resetState}/>
+                                    &nbsp;&nbsp;
+                                    <EliminarVehiculoAsignadoModal patente={vehiculoAsignado.patente} resetState={this.props.resetState}/> 
                             </tr>
+
                         ))
                     )}
                 </tbody>
