@@ -6,7 +6,7 @@ import NuevoEmpleadoModal from './NuevoEmpleadoModal'
 
 import axios from 'axios'
 
-class Dashboard extends Component {
+class Empleados extends Component {
     state = {
         empleados: []
     }
@@ -41,4 +41,4 @@ class Dashboard extends Component {
     }
 }
 
-export default Dashboard
+export default Empleados

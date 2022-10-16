@@ -6,7 +6,7 @@ import ListaVehiculos from './ListaVehiculos'
 import NuevoVehiculoModal from './NuevoVehiculoModal'
 import ListaVehiculosAsignados from './ListaVehiculosAsignados'
 
-class Dashboard2 extends Component {
+class Vehiculos extends Component {
     state = {
         vehiculos: [],
         vehiculosAsignados: []
@@ -35,6 +35,7 @@ class Dashboard2 extends Component {
 
     render() {
         return (
+            <>
             <Container style={{ marginTop: "20px" }}>
                 <Row>
                     <Col>
@@ -46,14 +47,18 @@ class Dashboard2 extends Component {
                         <NuevoVehiculoModal create={true} resetState={this.resetState}/>
                     </Col>
                 </Row>
+                
+            </Container>
+            <Container style={{ marginTop: "20px" }}>
                 <Row>
                     <Col>
                         <ListaVehiculosAsignados vehiculosAsignados={this.state.vehiculosAsignados} resetState2={this.resetState2}/>
                     </Col>
                 </Row>
             </Container>
+            </>
         )
     }
 }
 
-export default Dashboard2
+export default Vehiculos
