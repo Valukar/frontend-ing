@@ -3,7 +3,7 @@ import { Modal, ModalHeader, Button, ModalFooter } from 'reactstrap'
 
 import axios from 'axios'
 
-class ConfirmarEliminacionModal extends Component {
+class EliminarVehiculoModal extends Component {
     state = {
         modal: false
     }
@@ -14,8 +14,8 @@ class ConfirmarEliminacionModal extends Component {
         }))
     }
 
-    eliminarEmpleado = id => {
-        axios.delete('http://127.0.0.1:8000/crear_empleado/' + id).then(() => {
+    eliminarVehiculo = patente => {
+        axios.delete('http://127.0.0.1:8000/vehiculo/' + patente).then(() => {
             this.props.resetState()
             this.toggle()
         })
@@ -31,7 +31,7 @@ class ConfirmarEliminacionModal extends Component {
                     </ModalHeader> 
                     <ModalFooter>
                         <Button type="button" onClick={() => this.toggle()}>Cancelar</Button>
-                        <Button type="button" color="primary" onClick={() => this.eliminarEmpleado(this.props.id)}>Aceptar</Button>
+                        <Button type="button" color="primary" onClick={() => this.eliminarVehiculo(this.props.patente)}>Aceptar</Button>
                     </ModalFooter>
                 </Modal>
             </Fragment>
@@ -39,5 +39,4 @@ class ConfirmarEliminacionModal extends Component {
     }
 }
 
-export default ConfirmarEliminacionModal
-/* Aca no se elimina realmente, solo se cambia estado laboral */
+export default EliminarVehiculoModal
