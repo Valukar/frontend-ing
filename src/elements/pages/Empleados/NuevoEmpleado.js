@@ -5,16 +5,17 @@ import axios from 'axios'
 class NuevoEmpleado extends React.Component {
     state = {
         id: 0,
-        nombre: "",
-        telefono: "",
+        contrasena: "",
+        rol: "",
         tipoContrato: "",
         estadoLaboral: "",
+        rut: ""
     };
 
 componentDidMount() {
     if (this.props.empleado) {
-        const { id, nombre, telefono, tipoContrato, estadoLaboral } = this.props.empleado;
-        this.setState({ pk, nombre, telefono, tipoContrato, estadoLaboral })
+        const { id, contrasena, rol, tipoContrato, estadoLaboral, rut } = this.props.empleado;
+        this.setState({ id, contrasena, rol, tipoContrato, estadoLaboral, rut })
     }
 }
 
@@ -46,12 +47,16 @@ render() {
     return(
         <Form onSubmit={this.props.empleado ? this.editarEmpleado : this.crearEmpleado}>
             <FormGroup>
-                <Label for="nombre">Nombre:</Label>
-                <Input type="text" name="nombre" onChange={this.onChange} value={this.valorDefault(this.state.nombre)}/>
+                <Label for="rut">RUT:</Label>
+                <Input type="text" name="rut" onChange={this.onChange} value={this.valorDefault(this.state.rut)}/>
             </FormGroup>
             <FormGroup>
-                <Label for="telefono">Telefono:</Label>
-                <Input type="text" name="telefono" onChange={this.onChange} value={this.valorDefault(this.state.telefono)}/>
+                <Label for="contrasena">Contraseña:</Label>
+                <Input type="text" name="contrasena" onChange={this.onChange} value={this.valorDefault(this.state.contrasena)}/>
+            </FormGroup>
+            <FormGroup>
+                <Label for="rol">Rol:</Label>
+                <Input type="text" name="rol" onChange={this.onChange} value={this.valorDefault(this.state.rol)}/>
             </FormGroup>
             <FormGroup>
                 <Label for="tipoContrato">Tipo de Contrato:</Label>

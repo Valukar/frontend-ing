@@ -11,8 +11,8 @@ class ListaEmpleados extends Component {
             <Table>
                 <thead>
                     <tr>
-                        <th>Nombre</th>
-                        <th>Telefono</th>
+                        <th>RUT</th>
+                        <th>Rol</th>
                         <th>Tipo de Contrato</th>
                         <th>Estado Laboral</th>
                         <th></th>
@@ -22,14 +22,14 @@ class ListaEmpleados extends Component {
                     {!empleados || empleados.length <= 0 ? (
                         <tr>
                             <td colSpan="6" align="center">
-                                <b>No empleados</b>
+                                <b>No empleados.</b>
                             </td>
                         </tr>
                     ) : (
                         empleados.map(empleado => (
                             <tr key={empleado.id}>
-                                <td>{empleado.nombre}</td>
-                                <td>{empleado.telefono}</td>
+                                <td>{empleado.rut}</td>
+                                <td>{empleado.rol}</td>
                                 <td>{empleado.tipoContrato}</td>
                                 <td>{empleado.estadoLaboral}</td>
                                 <td align="center">
