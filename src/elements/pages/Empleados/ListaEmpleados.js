@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { Table } from 'reactstrap'
-import NuevoEmpleadoModal from './NuevoEmpleadoModal'
+
 
 import ConfirmarEliminacionModal from './ConfirmarEliminacionModal'
+import ModificarEmpleadoModal from './ModificarEmpleadoModal'
 
 class ListaEmpleados extends Component {
     render() {
@@ -29,11 +30,12 @@ class ListaEmpleados extends Component {
                         empleados.map(empleado => (
                             <tr key={empleado.id}>
                                 <td>{empleado.rut}</td>
+                                <td>{empleado.nombre}</td>
                                 <td>{empleado.rol}</td>
                                 <td>{empleado.tipoContrato}</td>
                                 <td>{empleado.estadoLaboral}</td>
                                 <td align="center">
-                                    <NuevoEmpleadoModal create={false} empleado={empleado} resetState={this.props.resetState}/>
+                                    <ModificarEmpleadoModal empleado={empleado} resetState={this.props.resetState}/>
                                     &nbsp;&nbsp;
                                     <ConfirmarEliminacionModal id={empleado.id} resetState={this.props.resetState}/> 
                                 </td>

@@ -2,7 +2,7 @@ import React from 'react'
 import { Button, Form, FormGroup, Input, Label } from 'reactstrap'
 import axios from 'axios'
 
-class NuevoEmpleado extends React.Component {
+class ModificarEmpleado extends React.Component {
     state = {
         id: 0,
         contrasena: "",
@@ -24,9 +24,9 @@ onChange = e => {
     this.setState({ [e.target.name]: e.target.value })
 }
 
-crearEmpleado = e => {
+editarEmpleado = e => {
     e.preventDefault();
-    axios.post('http://127.0.0.1:8000/crear_empleado/', this.state).then(() => {
+    axios.put('http://127.0.0.1:8000/crear_empleado/' + this.state.id, this.state).then(() => {
         this.props.resetState()
         this.props.toggle()
     })
@@ -38,14 +38,10 @@ valorDefault = value => {
 
 render() {
     return(
-        <Form onSubmit={this.crearEmpleado}>
+        <Form onSubmit={this.editarEmpleado}>
             <FormGroup>
                 <Label for="rut">RUT:</Label>
                 <Input type="text" name="rut" onChange={this.onChange} value={this.valorDefault(this.state.rut)}/>
-            </FormGroup>
-            <FormGroup>
-                <Label for="nombre">Nombre:</Label>
-                <Input type="text" name="nombre" onChange={this.onChange} value={this.valorDefault(this.state.nombre)}/>
             </FormGroup>
             <FormGroup>
                 <Label for="contrasena">Contraseña:</Label>
@@ -69,4 +65,4 @@ render() {
 }
 }
 
-export default NuevoEmpleado
+export default ModificarEmpleado
