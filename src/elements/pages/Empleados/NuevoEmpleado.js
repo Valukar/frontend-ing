@@ -8,7 +8,7 @@ class NuevoEmpleado extends React.Component {
         contrasena: "",
         rol: "",
         tipoContrato: "",
-        estadoLaboral: "",
+        estadoLaboral: "Activo",
         rut: "",
         nombre: ""
     };
@@ -61,7 +61,7 @@ render() {
             </FormGroup>
             <FormGroup>
                 <Label for="estadoLaboral">Estado Laboral:</Label>
-                <Input type="text" name="estadoLaboral" onChange={this.onChange} value={this.valorDefault(this.state.estadoLaboral)}/>
+                <Input type="text" name="estadoLaboral" onChange={this.onChange} value={this.valorDefault(this.state.estadoLaboral)} disabled={true}/>
             </FormGroup>
             <Button>Confirmar</Button>
         </Form>
