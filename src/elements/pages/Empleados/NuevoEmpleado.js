@@ -9,14 +9,14 @@ class NuevoEmpleado extends React.Component {
         rol: "",
         tipoContrato: "",
         estadoLaboral: "",
-        Rut: "",
+        rut: "",
         nombre: ""
     };
 
 componentDidMount() {
     if (this.props.empleado) {
-        const { id, contrasena, rol, tipoContrato, estadoLaboral, Rut, nombre } = this.props.empleado;
-        this.setState({ id, contrasena, rol, tipoContrato, estadoLaboral, Rut, nombre })
+        const { id, contrasena, rol, tipoContrato, estadoLaboral, rut, nombre } = this.props.empleado;
+        this.setState({ id, contrasena, rol, tipoContrato, estadoLaboral, rut, nombre })
     }
 }
 
@@ -40,8 +40,8 @@ render() {
     return(
         <Form onSubmit={this.crearEmpleado}>
             <FormGroup>
-                <Label for="Rut">RUT:</Label>
-                <Input type="text" name="Rut" onChange={this.onChange} value={this.valorDefault(this.state.Rut)}/>
+                <Label for="rut">RUT:</Label>
+                <Input type="text" name="rut" onChange={this.onChange} value={this.valorDefault(this.state.rut)}/>
             </FormGroup>
             <FormGroup>
                 <Label for="nombre">Nombre:</Label>

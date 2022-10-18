@@ -13,6 +13,7 @@ class ListaEmpleados extends Component {
                 <thead>
                     <tr>
                         <th>RUT</th>
+                        <th>Nombre</th>
                         <th>Rol</th>
                         <th>Tipo de Contrato</th>
                         <th>Estado Laboral</th>
@@ -29,7 +30,7 @@ class ListaEmpleados extends Component {
                     ) : (
                         empleados.map(empleado => (
                             <tr key={empleado.id}>
-                                <td>{empleado.Rut}</td>
+                                <td>{empleado.rut}</td>
                                 <td>{empleado.nombre}</td>
                                 <td>{empleado.rol}</td>
                                 <td>{empleado.tipoContrato}</td>
