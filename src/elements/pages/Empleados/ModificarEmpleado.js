@@ -44,8 +44,12 @@ render() {
                 <Input type="text" name="rut" onChange={this.onChange} value={this.valorDefault(this.state.rut)}/>
             </FormGroup>
             <FormGroup>
+                <Label for="nombre">Nombre:</Label>
+                <Input type="text" name="nombre" onChange={this.onChange} value={this.valorDefault(this.state.nombre)}/>
+            </FormGroup>
+            <FormGroup>
                 <Label for="contrasena">Contraseña:</Label>
-                <Input type="text" name="contrasena" onChange={this.onChange} value={this.valorDefault(this.state.contrasena)}/>
+                <Input type="password" name="contrasena" onChange={this.onChange} value={this.valorDefault(this.state.contrasena)}/>
             </FormGroup>
             <FormGroup>
                 <Label for="rol">Rol:</Label>

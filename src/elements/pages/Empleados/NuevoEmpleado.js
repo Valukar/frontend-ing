@@ -49,7 +49,7 @@ render() {
             </FormGroup>
             <FormGroup>
                 <Label for="contrasena">Contraseña:</Label>
-                <Input type="text" name="contrasena" onChange={this.onChange} value={this.valorDefault(this.state.contrasena)}/>
+                <Input type="password" name="contrasena" onChange={this.onChange} value={this.valorDefault(this.state.contrasena)}/>
             </FormGroup>
             <FormGroup>
                 <Label for="rol">Rol:</Label>
