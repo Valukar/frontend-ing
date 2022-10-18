@@ -24,7 +24,7 @@ class NuevoPedidoModal extends Component {
                 <Modal isOpen={this.state.modal} toggle={this.toggle}>
                     <ModalHeader toggle={this.toggle}>{titulo}</ModalHeader>
                     <ModalBody>
-                        <NuevoPedido resetState={this.props.resetState} toggle={this.toggle} Pedido={this.props.pedido}/>
+                        <NuevoPedido resetState={this.props.resetState} toggle={this.toggle} pedido={this.props.pedido}/>
                     </ModalBody>
                 </Modal>
             </Fragment>

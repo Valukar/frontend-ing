@@ -1,8 +1,8 @@
 import React, { Component, Fragment} from 'react'
 import { Button, Modal, ModalHeader, ModalBody } from 'reactstrap'
-import ModificarFechaMantencion from './ModificarFechaMantencion'
+import ModificarVehiculo from './ModificarFechaMantencion'
 
-class ModificarFechaMantencionModal extends Component {
+class ModificarVehiculoModal extends Component {
     state = {
         modal: false
     }
@@ -14,15 +14,15 @@ class ModificarFechaMantencionModal extends Component {
     }
 
     render() {
-        var titulo = "Modificando Fecha de Mantención"
-        var boton = <Button onClick={this.toggle}>Modificar</Button>
+        var titulo = "Modificando Vehículo"
+        var boton = <Button onClick={this.toggle}>Modificar Vehiculo</Button>
         return (
             <Fragment>
                 {boton}
                 <Modal isOpen={this.state.modal} toggle={this.toggle}>
                     <ModalHeader toggle={this.toggle}>{titulo}</ModalHeader>
                     <ModalBody>
-                        <ModificarFechaMantencion resetState={this.props.resetState} toggle={this.toggle} empleado={this.props.empleado}/>
+                        <ModificarVehiculo resetState={this.props.resetState} toggle={this.toggle} pedido={this.props.pedido}/>
                     </ModalBody>
                 </Modal>
             </Fragment>
@@ -30,4 +30,4 @@ class ModificarFechaMantencionModal extends Component {
     }
 }
 
-export default ModificarFechaMantencionModal
+export default ModificarVehiculoModal

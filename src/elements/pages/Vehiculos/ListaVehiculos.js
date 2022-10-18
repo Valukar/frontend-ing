@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { Table } from 'reactstrap'
-import NuevoVehiculoModal from './NuevoVehiculoModal'
 
-import EliminarVehiculoModal from './EliminarVehiculoModal'
+import ConfirmarElimVehiculoModal from './EliminarVehiculoModal'
+import ModificarVehiculoModal from './ModificarFechaMantencionModal'
 
 class ListaVehiculos extends Component {
     render() {
@@ -12,7 +12,7 @@ class ListaVehiculos extends Component {
                 <thead>
                     <tr>
                         <th>Patente</th>
-                        <th>Fecha de Revisión Técnica</th>
+                        <th>Fecha Revisión</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -20,17 +20,18 @@ class ListaVehiculos extends Component {
                     {!vehiculos || vehiculos.length <= 0 ? (
                         <tr>
                             <td colSpan="6" align="center">
-                                <b>No camionetas.</b>
+                                <b>No hay vehiculos</b>
                             </td>
                         </tr>
                     ) : (
                         vehiculos.map(vehiculo => (
                             <tr key={vehiculo.patente}>
+                                <td>{vehiculo.patente}</td>
                                 <td>{vehiculo.fechaRevision}</td>
                                 <td align="center">
-                                    <NuevoVehiculoModal create={false} vehiculo={vehiculo} resetState={this.props.resetState}/>
+                                    <ModificarVehiculoModal vehiculo={vehiculo} resetState={this.props.resetState}/>
                                     &nbsp;&nbsp;
-                                    <EliminarVehiculoModal patente={vehiculo.patente} resetState={this.props.resetState}/> 
+                                    <ConfirmarElimVehiculoModal patente={vehiculo.patente} resetState={this.props.resetState}/> 
                                 </td>
                             </tr>
                         ))

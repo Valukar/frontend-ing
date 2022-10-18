@@ -2,16 +2,17 @@ import React from 'react'
 import { Button, Form, FormGroup, Input, Label } from 'reactstrap'
 import axios from 'axios'
 
-class NuevoVehiculo extends React.Component {
+class NuevoVehiculo extends React.Component{
     state = {
         patente: "",
         fechaRevision: "",
     };
 
+
 componentDidMount() {
-    if (this.props.vehiculo) {
+    if (this.props.vehiculo){
         const { patente, fechaRevision } = this.props.vehiculo;
-        this.setState({ patente, fechaRevision })
+        this.setState({ patente, fechaRevision });
     }
 }
 
@@ -21,34 +22,28 @@ onChange = e => {
 
 crearVehiculo = e => {
     e.preventDefault();
-    axios.post('http://127.0.0.1:8000/vehiculo/', this.state).then(() => {
+    axios.post('http://127.0.0.1:8000/InsertarVehiculo/', this.state).then(() => {
         this.props.resetState()
         this.props.toggle()
     })
 }
 
-editarVehiculo = e => {
-    e.preventDefault();
-    axios.put('http://127.0.0.1:8000/vehiculo/' + this.state.patente, this.state).then(() => {
-        this.props.resetState()
-        this.props.toggle()
-    })
-}
+
 
 valorDefault = value => {
     return value === "" ? "" : value;
 }
 
-render() {
+render () {
     return(
-        <Form onSubmit={this.props.vehiculo ? this.editarVehiculo : this.crearVehiculo}>
+        <Form onSubmit={this.crearVehiculo}>
             <FormGroup>
-                <Label for="nombre">Patente:</Label>
+                <Label for="patente">Patente:</Label>
                 <Input type="text" name="patente" onChange={this.onChange} value={this.valorDefault(this.state.patente)}/>
             </FormGroup>
             <FormGroup>
-                <Label for="telefono">Fecha de Revisión Técnica:</Label>
-                <Input type="text" name="fechaRevision" onChange={this.onChange} value={this.valorDefault(this.state.fechaRevision)}/>
+                <Label for="fechaRevision">Fecha de revisión técnica:</Label>
+                <Input type="date" name="fechaRevision" onChange={this.onChange} value={this.valorDefault(this.state.fechaRevision)}/>
             </FormGroup>
             <Button>Confirmar</Button>
         </Form>

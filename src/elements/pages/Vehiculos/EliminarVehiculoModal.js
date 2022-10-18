@@ -3,7 +3,7 @@ import { Modal, ModalHeader, Button, ModalFooter } from 'reactstrap'
 
 import axios from 'axios'
 
-class EliminarVehiculoModal extends Component {
+class ConfirmarElimVehiculoModal extends Component {
     state = {
         modal: false
     }
@@ -15,7 +15,7 @@ class EliminarVehiculoModal extends Component {
     }
 
     eliminarVehiculo = patente => {
-        axios.delete('http://127.0.0.1:8000/vehiculo/' + patente).then(() => {
+        axios.delete('http://127.0.0.1:8000/InsertarVehiculo/' + patente).then(() => {
             this.props.resetState()
             this.toggle()
         })
@@ -24,10 +24,10 @@ class EliminarVehiculoModal extends Component {
     render() {
         return (
             <Fragment>
-                <Button color="danger" onClick={() => this.toggle()}>Eliminar</Button>
+                <Button color="danger" onClick={() => this.toggle()}>Eliminar Vehiculo</Button>
                 <Modal isOpen={this.state.modal} toggle={this.toggle}>
                     <ModalHeader toggle={this.toggle}>
-                        Confirmar eliminacion. 
+                        Confirmar eliminacion de Vehiculo. 
                     </ModalHeader> 
                     <ModalFooter>
                         <Button type="button" onClick={() => this.toggle()}>Cancelar</Button>
@@ -39,4 +39,4 @@ class EliminarVehiculoModal extends Component {
     }
 }
 
-export default EliminarVehiculoModal
+export default ConfirmarElimVehiculoModal
