@@ -38,7 +38,7 @@ render () {
         <Form onSubmit={this.editarVehiculo}>
             <FormGroup>
                 <Label for="fechaRevision">Fecha de revisión técnica:</Label> 
-                <Input type="text" name="fechaRevision" onChange={this.onChange} value={this.valorDefault(this.state.fechaRevision)}/>
+                <Input type="date" name="fechaRevision" onChange={this.onChange} value={this.valorDefault(this.state.fechaRevision)}/>
             </FormGroup>
             <Button>Aceptar</Button>
         </Form>
