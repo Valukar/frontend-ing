@@ -25,6 +25,7 @@ class Pedidos extends Component {
     render() {
         return (
             <Container style={{ marginTop: "20px" }}>
+                <a href="javascript:history.back()"> Volver Atrás</a>
                 <Row>
                     <Col>
                         <ListaPedidos pedidos={this.state.pedidos} resetState={this.resetState}/>

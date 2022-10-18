@@ -26,6 +26,7 @@ class Empleados extends Component {
     render() {
         return (
             <Container style={{ marginTop: "20px" }}>
+                <a href="javascript:history.back()"> Volver Atrás</a>
                 <Row>
                     <Col>
                         <ListaEmpleados empleados={this.state.empleados} resetState={this.resetState}/>

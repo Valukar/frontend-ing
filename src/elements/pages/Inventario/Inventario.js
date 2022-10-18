@@ -27,6 +27,7 @@ class Inventario extends Component {
     render() {
         return (
             <Container style={{ marginTop: "20px" }}>
+                <a href="javascript:history.back()"> Volver Atrás</a>
                 <Row>
                     <Col>
                         <ListaInventario inventario_f={this.state.inventario_f} resetState={this.resetState}/>

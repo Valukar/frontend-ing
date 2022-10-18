@@ -15,7 +15,7 @@ class NuevoVehiculoModal extends Component {
 
     render() {
         var titulo = "Añadir Vehiculo"
-        var boton = (<Button color="white" className="float-right" onClick={this.toggle} style= {{ minWidth: "200px" }}>Añadir</Button>)
+        var boton = (<Button color="primary" className="float-right" onClick={this.toggle} style= {{ minWidth: "200px" }}>Añadir</Button>)
         return (
             <Fragment>
                 {boton}

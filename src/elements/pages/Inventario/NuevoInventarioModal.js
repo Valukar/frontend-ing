@@ -20,7 +20,7 @@ class NuevoInventarioModal extends Component {
         var boton = <Button onClick={this.toggle}>Modificar</Button>
         if (create) {
             titulo = "Añadiendo inventario"
-            boton = (<Button color="orange" className="float-right" onClick={this.toggle} style= {{ minWidth: "200px" }}>Añadir</Button>)
+            boton = (<Button color="primary" className="float-right" onClick={this.toggle} style= {{ minWidth: "200px" }}>Añadir</Button>)
         }
         return (
             <Fragment>
