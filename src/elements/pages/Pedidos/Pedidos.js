@@ -15,7 +15,7 @@ class Pedidos extends Component {
     }
 
     getPedidos = () => {
-        axios.get('http://127.0.0.1:8000/pedido/').then(res => this.setState({ pedidos: res.data }))
+        axios.get('http://127.0.0.1:8000/Pedido/').then(res => this.setState({ pedidos: res.data }))
     }
 
     resetState = () => {
@@ -32,7 +32,7 @@ class Pedidos extends Component {
                 </Row>
                 <Row>
                     <Col>
-                        <NuevoPedidoModal create={true} resetState={this.resetState}/>
+                        <NuevoPedidoModal resetState={this.resetState}/>
                     </Col>
                 </Row>
             </Container>
