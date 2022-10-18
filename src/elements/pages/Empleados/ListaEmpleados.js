@@ -29,7 +29,7 @@ class ListaEmpleados extends Component {
                     ) : (
                         empleados.map(empleado => (
                             <tr key={empleado.id}>
-                                <td>{empleado.rut}</td>
+                                <td>{empleado.Rut}</td>
                                 <td>{empleado.nombre}</td>
                                 <td>{empleado.rol}</td>
                                 <td>{empleado.tipoContrato}</td>

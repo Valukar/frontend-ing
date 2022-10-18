@@ -9,14 +9,14 @@ class ModificarEmpleado extends React.Component {
         rol: "",
         tipoContrato: "",
         estadoLaboral: "",
-        rut: "",
+        Rut: "",
         nombre: ""
     };
 
 componentDidMount() {
     if (this.props.empleado) {
-        const { id, contrasena, rol, tipoContrato, estadoLaboral, rut, nombre } = this.props.empleado;
-        this.setState({ id, contrasena, rol, tipoContrato, estadoLaboral, rut, nombre })
+        const { id, contrasena, rol, tipoContrato, estadoLaboral, Rut, nombre } = this.props.empleado;
+        this.setState({ id, contrasena, rol, tipoContrato, estadoLaboral, Rut, nombre })
     }
 }
 
@@ -40,8 +40,8 @@ render() {
     return(
         <Form onSubmit={this.editarEmpleado}>
             <FormGroup>
-                <Label for="rut">RUT:</Label>
-                <Input type="text" name="rut" onChange={this.onChange} value={this.valorDefault(this.state.rut)}/>
+                <Label for="Rut">RUT:</Label>
+                <Input type="text" name="Rut" onChange={this.onChange} value={this.valorDefault(this.state.Rut)}/>
             </FormGroup>
             <FormGroup>
                 <Label for="contrasena">Contraseña:</Label>

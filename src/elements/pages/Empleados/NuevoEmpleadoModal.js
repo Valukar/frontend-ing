@@ -14,8 +14,8 @@ class NuevoEmpleadoModal extends Component {
     }
 
     render() {
-            var titulo = "Añadiendo Empleado"
-            var boton = (<Button color="orange" className="float-right" onClick={this.toggle} style= {{ minWidth: "200px" }}>Añadir</Button>)
+        var titulo = "Añadiendo Empleado"
+        var boton = (<Button color="orange" className="float-right" onClick={this.toggle} style= {{ minWidth: "200px" }}>Añadir</Button>)
         return (
             <Fragment>
                 {boton}
