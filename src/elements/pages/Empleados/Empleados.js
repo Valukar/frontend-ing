@@ -33,7 +33,7 @@ class Empleados extends Component {
                 </Row>
                 <Row>
                     <Col>
-                        <NuevoEmpleadoModal create={true} resetState={this.resetState}/>
+                        <NuevoEmpleadoModal resetState={this.resetState}/>
                     </Col>
                 </Row>
             </Container>
