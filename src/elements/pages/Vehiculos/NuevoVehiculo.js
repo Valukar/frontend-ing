@@ -39,7 +39,7 @@ render () {
         <Form onSubmit={this.crearVehiculo}>
             <FormGroup>
                 <Label for="patente">Patente:</Label>
-                <Input type="text" name="patente" onChange={this.onChange} value={this.valorDefault(this.state.patente)}/>
+                <Input type="text" maxLength={8} name="patente" onChange={this.onChange} value={this.valorDefault(this.state.patente)}/>
             </FormGroup>
             <FormGroup>
                 <Label for="fechaRevision">Fecha de revisión técnica:</Label>

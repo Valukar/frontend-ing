@@ -7,7 +7,7 @@ class NuevoPedido extends React.Component{
         idPedido: 0,
         direccion: "",
         comentario: "",
-        estado: "",
+        estado: "Pendiente",
     
     };
 
@@ -50,7 +50,7 @@ render () {
             </FormGroup>
             <FormGroup>
                 <Label for="estado">Estado del pedido:</Label> 
-                <Input type="text" name="estado" onChange={this.onChange} value={this.valorDefault(this.state.estado)}/>
+                <Input type="text" disabled={true} name="estado" onChange={this.onChange} value={this.valorDefault(this.state.estado)}/>
             </FormGroup>
             <Button>Confirmar Registro de pedido</Button>
         </Form>

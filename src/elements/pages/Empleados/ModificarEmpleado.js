@@ -53,15 +53,24 @@ render() {
             </FormGroup>
             <FormGroup>
                 <Label for="rol">Rol:</Label>
-                <Input type="text" name="rol" onChange={this.onChange} value={this.valorDefault(this.state.rol)}/>
+                <Input type="select" name="rol" onChange={this.onChange} value={this.valorDefault(this.state.rol)}>
+                    <option>Administrador</option>
+                    <option>Repartidor</option>
+                </Input>
             </FormGroup>
             <FormGroup>
                 <Label for="tipoContrato">Tipo de Contrato:</Label>
-                <Input type="text" name="tipoContrato" onChange={this.onChange} value={this.valorDefault(this.state.tipoContrato)}/>
+                <Input type="select" name="tipoContrato" onChange={this.onChange} value={this.valorDefault(this.state.tipoContrato)}>
+                    <option>Indefinido</option>
+                    <option>Termino fijo</option>
+                </Input>
             </FormGroup>
             <FormGroup>
                 <Label for="estadoLaboral">Estado Laboral:</Label>
-                <Input type="text" name="estadoLaboral" onChange={this.onChange} value={this.valorDefault(this.state.estadoLaboral)}/>
+                <Input type="select" name="estadoLaboral" onChange={this.onChange} value={this.valorDefault(this.state.estadoLaboral)}>
+                    <option>Activo</option>
+                    <option>Inactivo</option>
+                </Input>
             </FormGroup>
             <Button>Confirmar</Button>
         </Form>

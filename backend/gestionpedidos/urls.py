@@ -5,14 +5,14 @@ from .views import UserAPIView,user_detail,InventarioVeView,InventarioVe_detail
 from .views import VehiculoOpView,VehiculoOp_detail,InventarioReView,InventarioRe_detail,PedidoView,Pedido_detail
 from .viewss import login
 urlpatterns = [
-    path("admin/", admin.site.urls),
+    #path("admin/", admin.site.urls),
     #path(" ")
     path("crear_empleado/",UserAPIView),
     path("crear_empleado/<int:pk>",user_detail),
 
 
     path("InsertarVehiculo/",InventarioVeView),
-    path("InsertarVehiculo/<int:pk>",InventarioVe_detail),
+    path("InsertarVehiculo/<str:pk>",InventarioVe_detail),
 
     path("VehiculoOperativo/",VehiculoOpView),
     path("VehiculoOperativo/<int:pk>",VehiculoOp_detail),
