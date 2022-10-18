@@ -16,7 +16,7 @@ class NuevoPedidoModal extends Component {
     render() {
         
         var titulo = "Añadir Pedido"
-        var boton = (<Button color="gray" className="float-right" onClick={this.toggle} style= {{ minWidth: "200px" }}>Añadir</Button>)
+        var boton = (<Button color="primary" className="float-right" onClick={this.toggle} style= {{ minWidth: "200px" }}>Añadir</Button>)
         
         return (
             <Fragment>
