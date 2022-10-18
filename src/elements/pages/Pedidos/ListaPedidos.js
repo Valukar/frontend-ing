@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { Table } from 'reactstrap'
-import NuevoPedidoModal from './NuevoPedidoModal'
+
 
 import ConfirmarElimPedModal from './ConfirmarElimPedModal'
+import ModificarPedidoModal from './ModificarPedidoModal'
 
 class ListaPedidos extends Component {
     render() {
@@ -26,14 +27,14 @@ class ListaPedidos extends Component {
                         </tr>
                     ) : (
                         pedidos.map(pedido => (
-                            <tr key={pedido.id}>
+                            <tr key={pedido.idPedido}>
                                 <td>{pedido.direccion}</td>
                                 <td>{pedido.comentario}</td>
-                                <td>{pedido.estado_pedido}</td>
+                                <td>{pedido.estado}</td>
                                 <td align="center">
-                                    <NuevoPedidoModal create={false} pedido={pedido} resetState={this.props.resetState}/>
+                                    <ModificarPedidoModal pedido={pedido} resetState={this.props.resetState}/>
                                     &nbsp;&nbsp;
-                                    <ConfirmarElimPedModal id={pedido.id} resetState={this.props.resetState}/> 
+                                    <ConfirmarElimPedModal idPedido={pedido.idPedido} resetState={this.props.resetState}/> 
                                 </td>
                             </tr>
                         ))

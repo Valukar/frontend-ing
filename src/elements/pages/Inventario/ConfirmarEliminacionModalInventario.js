@@ -14,8 +14,8 @@ class ConfirmarEliminacionModalInventario extends Component {
         }))
     }
 
-    eliminarInventario = id => {
-        axios.delete('http://127.0.0.1:8000/crear_inventario/' + id).then(() => {
+    eliminarInventario = idProducto => {
+        axios.delete('http://127.0.0.1:8000/Inventario/' + idProducto).then(() => {
             this.props.resetState()
             this.toggle()
         })
@@ -31,7 +31,7 @@ class ConfirmarEliminacionModalInventario extends Component {
                     </ModalHeader> 
                     <ModalFooter>
                         <Button type="button" onClick={() => this.toggle()}>Cancelar</Button>
-                        <Button type="button" color="primary" onClick={() => this.eliminarInventario(this.props.id_producto)}>Aceptar</Button>
+                        <Button type="button" color="primary" onClick={() => this.eliminarInventario(this.props.idProducto)}>Aceptar</Button>
                     </ModalFooter>
                 </Modal>
             </Fragment>

@@ -1,8 +1,9 @@
 import React, { Component, Fragment} from 'react'
 import { Button, Modal, ModalHeader, ModalBody } from 'reactstrap'
-import NuevoPedido from './NuevoPedido'
+import ModificarPedido from './ModificarPedido'
 
-class NuevoPedidoModal extends Component {
+
+class ModificarPedidoModal extends Component {
     state = {
         modal: false
     }
@@ -14,17 +15,17 @@ class NuevoPedidoModal extends Component {
     }
 
     render() {
-        
-        var titulo = "Añadir Pedido"
-        var boton = (<Button color="gray" className="float-right" onClick={this.toggle} style= {{ minWidth: "200px" }}>Añadir</Button>)
-        
+       
+
+        var titulo = "Modificando Pedido"
+        var boton = <Button onClick={this.toggle}>Modificar Pedido</Button>
         return (
             <Fragment>
                 {boton}
                 <Modal isOpen={this.state.modal} toggle={this.toggle}>
                     <ModalHeader toggle={this.toggle}>{titulo}</ModalHeader>
                     <ModalBody>
-                        <NuevoPedido resetState={this.props.resetState} toggle={this.toggle} Pedido={this.props.pedido}/>
+                        <ModificarPedido resetState={this.props.resetState} toggle={this.toggle} pedido={this.props.pedido}/>
                     </ModalBody>
                 </Modal>
             </Fragment>
@@ -32,4 +33,4 @@ class NuevoPedidoModal extends Component {
     }
 }
 
-export default NuevoPedidoModal
+export default ModificarPedidoModal

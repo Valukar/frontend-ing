@@ -2,7 +2,7 @@ import React from 'react'
 import { Button, Form, FormGroup, Input, Label } from 'reactstrap'
 import axios from 'axios'
 
-class NuevoPedido extends React.Component{
+class ModificarPedido extends React.Component{
     state = {
         idPedido: 0,
         direccion: "",
@@ -23,15 +23,14 @@ onChange = e => {
     this.setState({ [e.target.name]: e.target.value })
 }
 
-crearPedido = e => {
+
+editarPedido = e => {
     e.preventDefault();
-    axios.post('http://127.0.0.1:8000/Pedido/', this.state).then(() => {
+    axios.put('http://127.0.0.1:8000/Pedido/' + this.state.idPedido, this.state).then(() => {
         this.props.resetState()
         this.props.toggle()
     })
 }
-
-
 
 valorDefault = value => {
     return value === "" ? "" : value;
@@ -39,7 +38,7 @@ valorDefault = value => {
 
 render () {
     return(
-        <Form onSubmit={this.crearPedido}>
+        <Form onSubmit={this.editarPedido }>
             <FormGroup>
                 <Label for="direccion">Direccion:</Label>
                 <Input type="text" name="direccion" onChange={this.onChange} value={this.valorDefault(this.state.direccion)}/>
@@ -52,13 +51,13 @@ render () {
                 <Label for="estado">Estado del pedido:</Label> 
                 <Input type="text" name="estado" onChange={this.onChange} value={this.valorDefault(this.state.estado)}/>
             </FormGroup>
-            <Button>Confirmar Registro de pedido</Button>
+            <Button>aceptar</Button>
         </Form>
     )
 }
 }
 
-export default NuevoPedido
+export default ModificarPedido
 
 /* por si acaso, por el momento dejo el estado del pedido como algo manual, pero recuerdo que esa madre debe ser automatica
 por si acaso para que en un futuro se deba modificar*/

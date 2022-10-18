@@ -14,8 +14,8 @@ class ConfirmarElimPedModal extends Component {
         }))
     }
 
-    eliminarPedido = id => {
-        axios.delete('http://127.0.0.1:8000/crear_Pedido/' + id).then(() => {
+    eliminarPedido = idPedido => {
+        axios.delete('http://127.0.0.1:8000/Pedido/' + idPedido).then(() => {
             this.props.resetState()
             this.toggle()
         })
@@ -31,7 +31,7 @@ class ConfirmarElimPedModal extends Component {
                     </ModalHeader> 
                     <ModalFooter>
                         <Button type="button" onClick={() => this.toggle()}>Cancelar</Button>
-                        <Button type="button" color="primary" onClick={() => this.eliminarPedido(this.props.id)}>Aceptar</Button>
+                        <Button type="button" color="primary" onClick={() => this.eliminarPedido(this.props.idPedido)}>Aceptar</Button>
                     </ModalFooter>
                 </Modal>
             </Fragment>

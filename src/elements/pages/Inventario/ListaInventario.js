@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { Table } from 'reactstrap'
-import NuevoInventarioModal from './NuevoInventarioModal'
+
 
 import ConfirmarEliminacionModalInventario from './ConfirmarEliminacionModalInventario'
+import ModificarInventarioModal from './ModificarInventarioModal'
 
 
 class ListaInventario extends Component {
@@ -13,6 +14,7 @@ class ListaInventario extends Component {
                 <thead>
                     <tr>
                         <th>Id_producto</th>
+                        <th>Nombre</th>
                         <th>Stock</th>
                         <th>Precio</th>
                         <th></th>
@@ -27,13 +29,15 @@ class ListaInventario extends Component {
                         </tr>
                     ) : (
                         inventario_f.map(inventario => (
-                            <tr key={inventario.id_producto}>
+                            <tr key={inventario.idProducto}>
+                                <td>{inventario.idProducto}</td>
+                                <td>{inventario.NombreProducto}</td>
                                 <td>{inventario.stock}</td>
                                 <td>{inventario.precio}</td>
                                 <td align="center">
-                                    <NuevoInventarioModal create={false} inventario={inventario} resetState={this.props.resetState}/>
+                                    <ModificarInventarioModal create={false} inventario={inventario} resetState={this.props.resetState}/>
                                     &nbsp;&nbsp;
-                                    <ConfirmarEliminacionModalInventario id={inventario.id} resetState={this.props.resetState}/> 
+                                    <ConfirmarEliminacionModalInventario idProducto={inventario.idProducto} resetState={this.props.resetState}/> 
                                 </td>
                             </tr>
                         ))
