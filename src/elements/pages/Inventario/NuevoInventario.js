@@ -4,7 +4,7 @@ import axios from 'axios'
 
 class NuevoInventario extends React.Component {
     state = {
-        idProducto: 0,
+
         NombreProducto:"",
         stock: "",
         precio: "",
@@ -13,8 +13,8 @@ class NuevoInventario extends React.Component {
 
 componentDidMount() {
     if (this.props.inventario) {
-        const { idProducto,NombreProducto, stock, precio } = this.props.inventario;
-        this.setState({ idProducto,NombreProducto, stock, precio })
+        const { NombreProducto, stock, precio } = this.props.inventario;
+        this.setState({ NombreProducto, stock, precio })
     }
 }
 
@@ -38,10 +38,6 @@ valorDefault = value => {
 render() {
     return(
         <Form onSubmit={this.crearInventario}>
-            <FormGroup>
-                <Label for="idProducto">Id producto:</Label>
-                <Input type="number" name="idProducto" onChange={this.onChange} value={this.valorDefault(this.state.idProducto)}/>
-            </FormGroup>
             <FormGroup>
                 <Label for="NombreProducto">Nombre Producto:</Label>
                 <Input type="text" name="NombreProducto" onChange={this.onChange} value={this.valorDefault(this.state.NombreProducto)}/>
