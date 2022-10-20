@@ -28,6 +28,9 @@ class Empleado(models.Model):
     estadoLaboral=models.CharField(max_length=100,unique=False)
     rut=models.CharField(max_length=100,unique=True,default="0")
     nombre=models.CharField(max_length=100,unique=False)
+    salario=models.PositiveIntegerField(default=0)
+    fechaInicio=models.DateField(blank=True,null=True)
+
 
 
     
@@ -48,10 +51,11 @@ class Recarga(models.Model):
 
 #este si
 class InventarioRecarga(models.Model):
-    idProducto=models.IntegerField(unique=True,primary_key=True)
+    idProducto=models.AutoField(unique=True,primary_key=True)
     NombreProducto=models.CharField(max_length=100,unique=False,default='gas')
     stock=models.IntegerField(default='0')
     precio=models.IntegerField()
+    
 class DetalleRecarga(models.Model):
     idDetalleRecarga=models.AutoField(unique=True,primary_key=True)
     idProductos=models.ForeignKey(InventarioRecarga,on_delete=models.CASCADE)
