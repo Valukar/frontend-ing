@@ -22,7 +22,7 @@ class ModificarVehiculoModal extends Component {
                 <Modal isOpen={this.state.modal} toggle={this.toggle}>
                     <ModalHeader toggle={this.toggle}>{titulo}</ModalHeader>
                     <ModalBody>
-                        <ModificarVehiculo resetState={this.props.resetState} toggle={this.toggle} pedido={this.props.pedido}/>
+                        <ModificarVehiculo resetState={this.props.resetState} toggle={this.toggle} vehiculo={this.props.vehiculo}/>
                     </ModalBody>
                 </Modal>
             </Fragment>
