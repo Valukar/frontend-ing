@@ -38,6 +38,9 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "rest_framework",
+    
+    
+   
     #"rest_framework.permissions.IsAuthenticatedOrReadOnly",
     "rest_framework.authtoken",
     "gestionpedidos",
@@ -60,6 +63,24 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = "distri_gas.urls"
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+  
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        
+        
+    ],
+    'DEFAULT_PERMISSION_CLASSES':[
+        'rest_framework.permissions.IsAuthenticated',
+        'rest_framework.permissions.IsAdminUser',
+        
+    ]
+}
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
