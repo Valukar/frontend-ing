@@ -7,17 +7,19 @@ import string
 import random
 # Create your models here.}
 """
-Creación de base de datos, de los distintas tablas
-"""
-from django.conf import settings
-from django.db.models.signals import post_save
-from django.dispatch import receiver
-from rest_framework.authtoken.models import Token
+def generarId():
+    largo=5
+    while True:
+        codigo=''.join(random.choice(string.ascii_uppercase,k=largo))
+        if Empleado.objects.filter(code=codigo).count()==0:
+            break
+    return codigo
 
-@receiver(post_save, sender=settings.AUTH_USER_MODEL)
-def create_auth_token(sender, instance=None, created=False, **kwargs):
-    if created:
-        Token.objects.create(user=instance)
+"""
+""
+
+
+    
 class Empleado(models.Model):
     id=models.AutoField(unique=True,primary_key=True)
     contrasena=models.CharField(max_length=100,unique=False)
