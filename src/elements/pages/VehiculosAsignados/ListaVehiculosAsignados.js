@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { Table } from 'reactstrap'
+import ModificarVehiculoOpModal from './ModificarVehiculoOpModal'
+import UnassignVehiculoModal from './UnassignVehiculoModal'
 
 class ListaVehiculosAsignados extends Component {
     render() {
@@ -23,11 +25,14 @@ class ListaVehiculosAsignados extends Component {
                         </tr>
                     ) : (
                         vehiculosOp.map(vehiculoOp => (
-                            <tr key={vehiculoOp.IdVehiculo}>
+                            <tr key={vehiculoOp.Id}>
                                 <td>{vehiculoOp.patente}</td>
                                 <td>{vehiculoOp.NombreEmpleado}</td>
                                 <td>{vehiculoOp.fechaRevision}</td>
                                 <td align="center">
+                                    <ModificarVehiculoOpModal vehiculoOp={vehiculoOp} resetState={this.props.resetState2}/>
+                                    &nbsp;&nbsp;
+                                    <UnassignVehiculoModal id={vehiculoOp.Id} resetState={this.props.resetState2}/> 
                                 </td>
                             </tr>
                         ))
