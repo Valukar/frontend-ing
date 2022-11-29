@@ -3,8 +3,8 @@ from django.shortcuts import render
 from django.http import HttpResponse,JsonResponse
 from rest_framework import generics,permissions,viewsets
 from rest_framework import status
-from .serializers import EmpleadoSerializer,UserSerializer,InventarioVeSerializer,InventarioVeOpSerializer,InventarioRecargaSerializer,PedidoSerializer 
-from .models import Empleado,InventarioVehiculo,VehiculoOperativos,InventarioRecarga,Pedido
+from .serializers import EmpleadoSerializer,UserSerializer,InventarioVeSerializer,InventarioVeOpSerializer,InventarioRecargaSerializer,PedidoSerializer,RecargaSerializer,DetalleRecargaSerializer 
+from .models import Empleado,InventarioVehiculo,VehiculoOperativos,InventarioRecarga,Pedido,PedidoActivo,Recarga,DetalleRecarga
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.views.decorators.csrf import csrf_exempt
@@ -12,7 +12,7 @@ from rest_framework.decorators import api_view
 from rest_framework.parsers import JSONParser
 from django.contrib.auth.models import User
 from rest_framework import mixins
-
+from .serializers import PedidoActivoSerializer
 
 # Create your views here.
 #def main(request):
@@ -152,7 +152,40 @@ def InventarioReView(request):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+@api_view(['GET', 'POST'])
+def recarga_inventario(request):
+    if request.method == 'GET':
+        snippets = Recarga.objects.all()
+        serializer = RecargaSerializer(snippets, many=True)
+        return Response(serializer.data)
 
+    elif request.method == 'POST':
+        serializer = RecargaSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+@api_view(['GET', 'POST'])
+def detallerecarga_inventario(request):
+    if request.method == 'GET':
+        snippets = DetalleRecarga.objects.all()
+        serializer = DetalleRecargaSerializer(snippets, many=True)
+        return Response(serializer.data)
+
+    elif request.method == 'POST':
+        serializer = DetalleRecargaSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+
+
+
+
+
+ 
 @api_view(['GET', 'PUT', 'DELETE'])
 def InventarioRe_detail(request, pk):
     try:
@@ -213,8 +246,19 @@ def Pedido_detail(request, pk):
         snippet.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
+@api_view(['GET', 'POST'])
+def pedido_activo(request):
+    if request.method == 'GET':
+        snippets = PedidoActivo.objects.all()
+        serializer = PedidoActivoSerializer(snippets, many=True)
+        return Response(serializer.data)
 
-
+    elif request.method == 'POST':
+        serializer = PedidoActivoSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 
