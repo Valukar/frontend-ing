@@ -18,6 +18,7 @@ function App() {
           <Route path="/inventario" element={<Inventario/>}/>
           <Route path="/pedidos" element={<Pedidos/>}/>
           <Route path="/vehiculos" element={<Vehiculos/>}/>
+          <Route path="/vehiculos/asignados" element={<Vehiculos/>}/>
         </Routes>
       </div>
     </Router>

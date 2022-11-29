@@ -4,7 +4,6 @@ import { Col, Container, Row } from 'reactstrap'
 import axios from 'axios'
 import ListaVehiculos from './ListaVehiculos'
 import NuevoVehiculoModal from './NuevoVehiculoModal'
-import ListaVehiculosAsignados from '../VehiculosAsignados/ListaVehiculosAsignados'
 
 class Vehiculos extends Component {
     state = {
@@ -19,16 +18,8 @@ class Vehiculos extends Component {
         axios.get('http://127.0.0.1:8000/InsertarVehiculo/').then(res => this.setState({ vehiculos: res.data }))
     }
 
-    getVehiculosOp = () => {
-        axios.get('http://127.0.0.1:8000/InsertarVehiculo/').then(res => this.setState({ vehiculosOp: res.data })) 
-    }
-
     resetState = () => {
         this.getVehiculos()
-    }
-
-    resetState2 = () => {
-        this.getVehiculosOp()
     }
 
     render() {
@@ -47,13 +38,12 @@ class Vehiculos extends Component {
                     </Col>
                 </Row>
             </Container>
-            <Container>
-                <Row>
-                    <Col>
-                        <ListaVehiculosAsignados vehiculosOp={this.state.vehiculosOp} resetState={this.resetState2}/>
-                    </Col>
-                </Row>
-            </Container>
+            <Fragment>
+                <Link to="/vehiculos/asignados">
+                <Button color="primary" className="float-right"  style= {{ minWidth: "100px" }}>Vehiculos Asignados
+                </Button>{' '}
+                </Link>
+            </Fragment>
             </>
         )
     }
