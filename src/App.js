@@ -7,6 +7,7 @@ import Empleados from "./elements/pages/Empleados/Empleados";
 import Inventario from "./elements/pages/Inventario/Inventario";
 import Pedidos from "./elements/pages/Pedidos/Pedidos";
 import Vehiculos from "./elements/pages/Vehiculos/Vehiculos";
+import VehiculosAsignados from "./elements/pages/VehiculosAsignados/VehiculosAsignados";
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
           <Route path="/inventario" element={<Inventario/>}/>
           <Route path="/pedidos" element={<Pedidos/>}/>
           <Route path="/vehiculos" element={<Vehiculos/>}/>
-          <Route path="/vehiculos/asignados" element={<Vehiculos/>}/>
+          <Route path="/vehiculos/asignados" element={<VehiculosAsignados/>}/>
         </Routes>
       </div>
     </Router>

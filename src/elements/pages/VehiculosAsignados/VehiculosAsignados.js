@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Col, Container, Row } from 'reactstrap'
 
 import axios from 'axios'
-import NuevoVehiculoModal from './NuevoVehiculoModal'
+
 import ListaVehiculosAsignados from './ListaVehiculosAsignados'
 
 class VehiculosAsignados extends Component {

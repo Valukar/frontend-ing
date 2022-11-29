@@ -2,7 +2,8 @@ from venv import create
 from django.contrib import admin
 from django.urls import path,include
 from .views import UserAPIView,user_detail,InventarioVeView,InventarioVe_detail
-from .views import VehiculoOpView,VehiculoOp_detail,InventarioReView,InventarioRe_detail,PedidoView,Pedido_detail
+from .views import VehiculoOpView,VehiculoOp_detail,InventarioReView,InventarioRe_detail,PedidoView,Pedido_detail,pedido_activo
+from .views import InventarioReView,recarga_inventario,detallerecarga_inventario
 from .viewss import login
 urlpatterns = [
     #path("admin/", admin.site.urls),
@@ -19,11 +20,13 @@ urlpatterns = [
 
     path("Inventario/",InventarioReView),
     path("Inventario/<int:pk>",InventarioRe_detail),
+    path("Inventario_recarga/",recarga_inventario),
+    path("Inventario_detalles_descarga/",detallerecarga_inventario),
 
     path("Pedido/",PedidoView),
     path("Pedido/<int:pk>",Pedido_detail),
 
-
+    path("pedido_ac/",pedido_activo),
     #path("", include('api.urls'))
     #path("Empleado/",EmpleadoView.as_view()),
     

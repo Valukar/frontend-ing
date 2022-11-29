@@ -12,7 +12,7 @@ class ListaVehiculosAsignados extends Component {
                     <tr>
                         <th>Patente</th>
                         <th>Repartidor</th>
-                        <th>Fecha Revisión</th>
+                        <th>Fecha Revisión</th> 
                         <th></th>
                     </tr>
                 </thead>
@@ -25,9 +25,9 @@ class ListaVehiculosAsignados extends Component {
                         </tr>
                     ) : (
                         vehiculosOp.map(vehiculoOp => (
-                            <tr key={vehiculoOp.Id}>
+                            <tr key={vehiculoOp.IdVehiculo}>
                                 <td>{vehiculoOp.patente}</td>
-                                <td>{vehiculoOp.NombreEmpleado}</td>
+                                <td>{vehiculoOp.nombre}</td>
                                 <td>{vehiculoOp.fechaRevision}</td>
                                 <td align="center">
                                     <ModificarVehiculoOpModal vehiculoOp={vehiculoOp} resetState={this.props.resetState2}/>

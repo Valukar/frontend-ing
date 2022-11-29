@@ -7,19 +7,18 @@ import string
 import random
 # Create your models here.}
 """
-def generarId():
-    largo=5
-    while True:
-        codigo=''.join(random.choice(string.ascii_uppercase,k=largo))
-        if Empleado.objects.filter(code=codigo).count()==0:
-            break
-    return codigo
-
+Creación de base de datos, de los distintas tablas
 """
-""
+from django.conf import settings
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from rest_framework.authtoken.models import Token
+from django.db.models.signals import post_save
 
-
-    
+@receiver(post_save, sender=settings.AUTH_USER_MODEL)
+def create_auth_token(sender, instance=None, created=False, **kwargs):
+    if created:
+        Token.objects.create(user=instance)
 class Empleado(models.Model):
     id=models.AutoField(unique=True,primary_key=True)
     contrasena=models.CharField(max_length=100,unique=False)
@@ -46,10 +45,12 @@ class VehiculoOperativos(models.Model):
 class Recarga(models.Model):
 
     idRecarga=models.AutoField(unique=True,primary_key=True)
-    fechaRecarga=models.DateField(blank=True)
+    fechaRecarga=models.DateField(blank=True,null=True)
     IdVehiculo=models.ForeignKey(VehiculoOperativos,on_delete=models.CASCADE)
 
 #este si
+
+
 class InventarioRecarga(models.Model):
     idProducto=models.AutoField(unique=True,primary_key=True)
     NombreProducto=models.CharField(max_length=100,unique=False,default='gas')
@@ -60,7 +61,19 @@ class DetalleRecarga(models.Model):
     idDetalleRecarga=models.AutoField(unique=True,primary_key=True)
     idProductos=models.ForeignKey(InventarioRecarga,on_delete=models.CASCADE)
     idRecarga=models.ForeignKey(Recarga,on_delete=models.CASCADE)
-    cantidad=models.IntegerField()   
+    cantidad=models.IntegerField() 
+#@receiver(post_save, sender =DetalleRecarga)  
+#def update_stock(sender, instance, **kwargs):
+ #   s=InventarioRecarga.objects.get(idProducto=instance.idProductos)
+  #  s.stock=s.stock-instance.cantidad
+   # s.save()
+
+#@receiver(post_save, sender =DetalleRecarga)
+#def update_stock(sender, instance, **kwargs):    
+#    s=InventarioRecarga.objects.get(InventarioRecarga.idProducto)
+#    s.stock = s.stock - instance.cantidad
+
+    #s.save()
 class IngresarVenta(models.Model):
     idVenta=models.IntegerField(unique=True,primary_key=True)
     fechaVenta=models.DateField(blank=True)
@@ -80,12 +93,28 @@ class Pedido(models.Model):
     direccion=models.CharField(max_length=100)
     comentario=models.CharField(max_length=100)
     estado=models.CharField(max_length=100)
+
 class PedidoActivo(models.Model):
     idPedidoActivo=models.AutoField(unique=True, primary_key=True)
     idPedido=models.ForeignKey(Pedido,on_delete=models.CASCADE)
     idPatente=models.ForeignKey(VehiculoOperativos,on_delete=models.CASCADE)
 
 
+
+
+"""
+@receiver(post_save, sender=DetalleRecarga)
+def remove_from_inventory(sender, instance, **kwargs):
+    inventory_item = InventarioRecarga.objects.get(id=instance.InventarioRecarga.idProducto)
+    inventory_item.stock = inventory_item.stock - instance.cantidad
+
+    inventory_item.save()
+"""    
+#@receiver(post_save,sender=DetalleRecarga)
+#def update_stock(sender,instance,**kwargs):
+
+#    instance.InventarioRecarga.stock-=instance.cantidad
+#    instance.InventarioRecarga.save()
 
 #sumatoris
 
