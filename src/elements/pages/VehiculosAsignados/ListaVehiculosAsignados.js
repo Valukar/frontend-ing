@@ -30,7 +30,7 @@ class ListaVehiculosAsignados extends Component {
                                 <td>{vehiculoOp.nombre}</td>
                                 <td>{vehiculoOp.fechaRevision}</td>
                                 <td align="center">
-                                    <UnassignVehiculoModal id={vehiculoOp.Id} resetState={this.props.resetState2}/> 
+                                    <UnassignVehiculoModal IdVehiculo={vehiculoOp.IdVehiculo} resetState={this.props.resetState}/> 
                                 </td>
                             </tr>
                         ))

@@ -14,8 +14,8 @@ class UnassignPedidoAcModal extends Component {
         }))
     }
 
-    eliminarPedido = patente => {
-        axios.delete('http://127.0.0.1:8000/pedido_ac/' + patente).then(() => {
+    eliminarPedido = idPedidoActivo => {
+        axios.delete('http://127.0.0.1:8000/pedido_ac/' + idPedidoActivo).then(() => {
             this.props.resetState()
             this.toggle()
         })
@@ -31,7 +31,7 @@ class UnassignPedidoAcModal extends Component {
                     </ModalHeader> 
                     <ModalFooter>
                         <Button type="button" onClick={() => this.toggle()}>Cancelar</Button>
-                        <Button type="button" color="primary" onClick={() => this.eliminarPedido(this.props.patente)}>Aceptar</Button>
+                        <Button type="button" color="primary" onClick={() => this.eliminarPedido(this.props.idPedidoActivo)}>Aceptar</Button>
                     </ModalFooter>
                 </Modal>
             </Fragment>
