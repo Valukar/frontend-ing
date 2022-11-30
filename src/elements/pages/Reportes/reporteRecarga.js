@@ -2,40 +2,38 @@ import React, { Component } from 'react'
 import { Col, Container, Row } from 'reactstrap'
 
 import axios from 'axios'
+import ListaReporteRecarga from './ListarReporteRecarga'
 
-import ListaPedidosAc from './ListarPedidosAc'
 
-class PedidoAc extends Component {
+class Reporterecarga extends Component {
     state = {
-        pedidoAc: []
+        inventario_f: []
     }
 
     componentDidMount() {
         this.resetState()
     }
 
-    getpedidoAc = () => {
-        axios.get('http://127.0.0.1:8000/pedido_ac/').then(res => this.setState({ pedidoAc: res.data })) 
+    getInventario = () => {
+        axios.get('http://127.0.0.1:8000/reporte_recargas/').then(res => this.setState({ inventario_f: res.data }))
     }
 
     resetState = () => {
-        this.getpedidoAc()
+        this.getInventario()
     }
 
     render() {
         return (
-            <>
             <Container style={{ marginTop: "20px" }}>
                 <a href="javascript:history.back()"> Volver Atrás</a>
                 <Row>
                     <Col>
-                        <ListaPedidosAc pedidoAc={this.state.pedidoAc} resetState={this.resetState}/>
+                        <ListaReporteRecarga inventario_f={this.state.inventario_f} resetState={this.resetState}/>
                     </Col>
                 </Row>
             </Container>
-            </>
         )
     }
 }
 
-export default PedidoAc
+export default Reporterecarga

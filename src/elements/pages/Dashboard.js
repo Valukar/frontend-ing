@@ -48,6 +48,27 @@ class Dashboard extends Component {
                             </button>{' '}
                             </Link>
                         </Fragment>
+                        <Fragment>
+
+                            <Link to="/login">
+                            <button class="btn btn-outline-success" type="button">login
+                            </button>{' '}
+                            </Link>
+                        </Fragment>
+                        <Fragment>
+
+                            <Link to="/pedidos/activo">
+                            <button class="btn btn-outline-success" type="button">pedidos activos
+                            </button>{' '}
+                            </Link>
+                        </Fragment>
+                        <Fragment>
+
+                            <Link to="/reporte">
+                            <button class="btn btn-outline-success" type="button">Reporte recargas
+                            </button>{' '}
+                            </Link>
+                        </Fragment>
 
                         
                     </div>

@@ -1,16 +1,18 @@
 import React from "react"
 import axios from 'axios'
+import { Button, Form, FormGroup, Input, Label } from "reactstrap";
 
 class ModificarPedidoAc extends React.Component{
     state = {
+        idPedidoActivo:"",
         patente: "",
         pedido: "",
     }
 
     componentDidMount() {
         if (this.props.pedidoAc){
-            const { patente, pedido } = this.props.pedidoAc;
-            this.setState({ patente, pedido });
+            const { idPedidoActivo,patente, pedido } = this.props.pedidoAc;
+            this.setState({ idPedidoActivo,patente, pedido });
         }
     }
 
@@ -20,7 +22,7 @@ onChange = e => {
 
 editarPedido = e => {
     e.preventDefault();
-    axios.put('' + this.state.patente, this.state).then(() => {
+    axios.put('http://127.0.0.1:8000/pedido_ac/' + this.state.patente, this.state).then(() => {
         this.props.resetState()
         this.props.toggle()
     })
