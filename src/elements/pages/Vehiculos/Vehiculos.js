@@ -38,13 +38,18 @@ class Vehiculos extends Component {
                         <NuevoVehiculoModal resetState={this.resetState}/>
                     </Col>
                 </Row>
+
+
+                <Fragment>
+                
+                    <Link to="/vehiculos/asignados">
+                        <Button color="success" className="float-left"  style= {{ minWidth: "100px" }}>Vehiculos Asignados
+                        </Button>{' '}
+                    </Link>
+                </Fragment>
+
             </Container>
-            <Fragment>
-                <Link to="/vehiculos/asignados">
-                <Button color="primary" className="float-right"  style= {{ minWidth: "100px" }}>Vehiculos Asignados
-                </Button>{' '}
-                </Link>
-            </Fragment>
+            
             </>
         )
     }
