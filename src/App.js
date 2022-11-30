@@ -8,6 +8,7 @@ import Empleados from "./elements/pages/Empleados/Empleados";
 import Inventario from "./elements/pages/Inventario/Inventario";
 import Pedidos from "./elements/pages/Pedidos/Pedidos";
 import PedidoAc from "./elements/pages/PedidosAsignados/PedidosAc";
+import Recargas from "./elements/pages/Recargas/Recargas";
 import Reporterecarga from "./elements/pages/Reportes/reporteRecarga";
 import ReporteVentas from "./elements/pages/Reportes/ReporteVenta";
 import Vehiculos from "./elements/pages/Vehiculos/Vehiculos";
