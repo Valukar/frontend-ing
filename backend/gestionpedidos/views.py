@@ -12,7 +12,8 @@ from rest_framework.decorators import api_view
 from rest_framework.parsers import JSONParser
 from django.contrib.auth.models import User
 from rest_framework import mixins
-from .serializers import PedidoActivoSerializer
+from .serializers import PedidoActivoSerializer,prueba
+from django.db.models import Count
 
 # Create your views here.
 #def main(request):
@@ -180,7 +181,39 @@ def detallerecarga_inventario(request):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
+@api_view(['GET'])
+def pruebita(request):
+    from django.db.models import Sum
+    from django.core import serializers
+    from django.db.models.query import QuerySet
+    from django_group_by import GroupByMixin
+    from django.db.models import Count
 
+
+    #s=DetalleRecarga.objects.all().order_by('cantidad').values()
+    #s=DetalleRecarga.objects.get('idProductos')
+    #t=DetalleRecarga.objects.aggregate(num_answers=Count('idProductos'))
+    #t.group_by = ['idProductos']
+    #t=(DetalleRecarga.objects.all().values('idProductos'))
+    
+
+   
+  
+    #results = QuerySet(query=t, model=DetalleRecarga)
+    #results=results.count('idProductos')
+
+    return Response(DetalleRecarga.objects.values('idProductos__NombreProducto','idRecarga__fechaRecarga','idRecarga__IdVehiculo__patente'))
+    from django.db.models import Count
+
+    #Afiliado.objects.order_by('-Nombre')
+    #return Response(serializers.serialize("json",s.))
+    #City.objects.aggregate(Sum('population'))
+    """
+    if request.method == 'GET':
+        snippets = DetalleRecarga.objects.all()
+        serializer = prueba(snippets, many=True)
+        return Response(serializer.data)
+"""
 
 
 
@@ -259,6 +292,10 @@ def pedido_activo(request):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+
+
 
 
 

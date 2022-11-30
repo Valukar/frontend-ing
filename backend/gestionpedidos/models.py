@@ -62,6 +62,8 @@ class DetalleRecarga(models.Model):
     idProductos=models.ForeignKey(InventarioRecarga,on_delete=models.CASCADE)
     idRecarga=models.ForeignKey(Recarga,on_delete=models.CASCADE)
     cantidad=models.IntegerField() 
+ 
+    
 #@receiver(post_save, sender =DetalleRecarga)  
 #def update_stock(sender, instance, **kwargs):
  #   s=InventarioRecarga.objects.get(idProducto=instance.idProductos)
