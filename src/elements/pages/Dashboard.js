@@ -57,8 +57,13 @@ class Dashboard extends Component {
                                 <button class="btn btn-outline-success" type="button">Reporte recargas
                                 </button>{' '}
                             </Link>
-                   
 
+                            <Link to="/Inventario_recarga">
+                                <button class="btn btn-outline-success" type="button">Recargas
+                                </button>{' '}
+                            </Link>
+                   
+                            
                         
                         </div>
 
