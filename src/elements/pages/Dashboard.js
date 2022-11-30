@@ -8,6 +8,7 @@ import { Button, Container, Navbar } from 'reactstrap';
 class Dashboard extends Component {
     render() {
         return (
+            
             <div class="pos-f-t">
                 <div class="collapse" id="navbarToggleExternalContent">
                     <div class="bg-dark p-4 d-grid gap-4" >
@@ -18,7 +19,9 @@ class Dashboard extends Component {
                             <img src="loading.png" class="img-fluid" alt="Responsive image "></img>{' '}
                         
                         </div>
+                        
                         <div class="d-grid gap-4 d-md-flex">
+                        
                             <Link to="/empleado">
                                 <button class="btn btn-outline-success" type="button">Empleado
                                 </button>{' '}
@@ -39,38 +42,32 @@ class Dashboard extends Component {
                                 </button>{' '}
                             </Link>
 
-                        </Fragment>
-                        <Fragment>
-
                             <Link to="/login">
-                            <button class="btn btn-outline-success" type="button">login
-                            </button>{' '}
+                                <button class="btn btn-outline-success" type="button">login
+                                </button>{' '}
                             </Link>
-                        </Fragment>
-                        <Fragment>
-
+                       
                             <Link to="/pedidos/activo">
-                            <button class="btn btn-outline-success" type="button">pedidos activos
-                            </button>{' '}
+                                <button class="btn btn-outline-success" type="button">pedidos activos
+                                </button>{' '}
                             </Link>
-                        </Fragment>
-                        <Fragment>
+                        
 
                             <Link to="/reporte">
-                            <button class="btn btn-outline-success" type="button">Reporte recargas
-                            </button>{' '}
+                                <button class="btn btn-outline-success" type="button">Reporte recargas
+                                </button>{' '}
                             </Link>
-                        </Fragment>
+                   
 
                         
-                    </div>
+                        </div>
 
                             
-                        </div>
+                    </div>
                                                                                   
-                    </div>                    
+                </div>                    
 
-                </div>
+               
             
                 <nav class="navbar navbar-dark bg-dark">
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
