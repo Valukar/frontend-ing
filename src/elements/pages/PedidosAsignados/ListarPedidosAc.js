@@ -34,9 +34,8 @@ class ListaPedidosAc extends Component {
                                 <td>{PedidoAct.direccion}</td>
                                 <td>{PedidoAct.comentario}</td>
                                 <td align="center">
-                                    <ModificarPedidoAcModal PedidoAct={PedidoAct} resetState={this.props.resetState2}/>
-                                    &nbsp;&nbsp;
-                                    <UnassignPedidoAcModal id={PedidoAct.Id} resetState={this.props.resetState2}/> 
+                            
+                                    <UnassignPedidoAcModal idPedidoActivo={PedidoAct.idPedidoActivo} resetState={this.props.resetState}/> 
                                 </td>
                             </tr>
                         ))

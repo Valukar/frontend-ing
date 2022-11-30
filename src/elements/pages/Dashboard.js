@@ -53,10 +53,27 @@ class Dashboard extends Component {
                             </Link>
                         
 
-                            <Link to="/reporte">
+                            {/* <Link to="/reporte">
                                 <button class="btn btn-outline-success" type="button">Reporte recargas
                                 </button>{' '}
                             </Link>
+                            
+                            <Link to="/reporte/ventas">
+                                <button class="btn btn-outline-success" type="button">Reporte ventas
+                                </button>{' '}
+                            </Link> */}
+                           
+                               
+                            <div class="btn-group" role="group">
+                                <button id="btnGroupDrop1" type="button" class="btn btn-outline-success" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Reportes
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                                <a class="dropdown-item" href="/reporte">Reporte Vehículos</a>
+                                <a class="dropdown-item" href="/reporte/ventas">Reporte Ventas</a>
+                                </div>
+                            </div>
+                         
 
                             <Link to="/Inventario_recarga">
                                 <button class="btn btn-outline-success" type="button">Recargas

@@ -10,6 +10,7 @@ import Pedidos from "./elements/pages/Pedidos/Pedidos";
 import PedidoAc from "./elements/pages/PedidosAsignados/PedidosAc";
 import Recargas from "./elements/pages/Recargas/Recargas";
 import Reporterecarga from "./elements/pages/Reportes/reporteRecarga";
+import ReporteVentas from "./elements/pages/Reportes/ReporteVenta";
 import Vehiculos from "./elements/pages/Vehiculos/Vehiculos";
 import VehiculosAsignados from "./elements/pages/VehiculosAsignados/VehiculosAsignados";
 
@@ -26,8 +27,8 @@ function App() {
           <Route path="/vehiculos/asignados" element={<VehiculosAsignados/>}/>
           <Route path="/login" element={<Login/>}/>
           <Route path="/pedidos/activo"element={<PedidoAc/>}/>
-          <Route path="/reporte"element={<Reporterecarga/>}/>Inventario_recarga
-          <Route path="/Inventario_recarga"element={<Recargas/>}/>
+          <Route path="/reporte"element={<Reporterecarga/>}/>
+          <Route path="/reporte/ventas"element={<ReporteVentas/>}/>
         </Routes>
       </div>
     </Router>
