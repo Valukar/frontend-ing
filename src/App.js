@@ -9,6 +9,7 @@ import Inventario from "./elements/pages/Inventario/Inventario";
 import Pedidos from "./elements/pages/Pedidos/Pedidos";
 import PedidoAc from "./elements/pages/PedidosAsignados/PedidosAc";
 import Reporterecarga from "./elements/pages/Reportes/reporteRecarga";
+import ReporteVentas from "./elements/pages/Reportes/ReporteVenta";
 import Vehiculos from "./elements/pages/Vehiculos/Vehiculos";
 import VehiculosAsignados from "./elements/pages/VehiculosAsignados/VehiculosAsignados";
 
@@ -26,6 +27,7 @@ function App() {
           <Route path="/login" element={<Login/>}/>
           <Route path="/pedidos/activo"element={<PedidoAc/>}/>
           <Route path="/reporte"element={<Reporterecarga/>}/>
+          <Route path="/reporte/ventas"element={<ReporteVentas/>}/>
         </Routes>
       </div>
     </Router>

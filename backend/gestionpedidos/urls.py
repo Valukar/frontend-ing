@@ -3,7 +3,8 @@ from django.contrib import admin
 from django.urls import path,include
 from .views import UserAPIView,user_detail,InventarioVeView,InventarioVe_detail
 from .views import VehiculoOpView,VehiculoOp_detail,InventarioReView,InventarioRe_detail,PedidoView,Pedido_detail,pedido_activo
-from .views import InventarioReView,recarga_inventario,detallerecarga_inventario,pruebita
+from .views import InventarioReView,recarga_inventario,detallerecarga_inventario,pruebita,pruebitados
+from .views import IngresarVentaView,DetalleVentaView
 from .viewss import login
 urlpatterns = [
     #path("admin/", admin.site.urls),
@@ -25,9 +26,14 @@ urlpatterns = [
 
     path("Pedido/",PedidoView),
     path("Pedido/<int:pk>",Pedido_detail),
-    
     path("pedido_ac/",pedido_activo),
+
+    path("ingresar_venta/",IngresarVentaView),
+    path("detalle_venta/",DetalleVentaView),
+
+
     path("reporte_recargas/",pruebita),
+    path("reporte_ventas/",pruebitados),
   
     #path("", include('api.urls'))
     #path("Empleado/",EmpleadoView.as_view()),

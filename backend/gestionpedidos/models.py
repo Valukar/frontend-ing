@@ -80,12 +80,18 @@ class IngresarVenta(models.Model):
     idVenta=models.IntegerField(unique=True,primary_key=True)
     fechaVenta=models.DateField(blank=True)
     idVehiculo=models.ForeignKey(VehiculoOperativos,on_delete=models.CASCADE)
+
 class DetalleVenta(models.Model):#trigger
     idDetalleVenta=models.AutoField(unique=True,primary_key=True)     
     cantidadVenta=models.IntegerField()
     idProductos=models.ForeignKey(InventarioRecarga,on_delete=models.CASCADE)
     idVenta=models.ForeignKey(IngresarVenta,on_delete=models.CASCADE)
     subtotal=models.IntegerField()
+
+
+
+
+    
 class Pago(models.Model):
     tipoPago=models.CharField(max_length=100)
     idVenta=models.ForeignKey(IngresarVenta,on_delete=models.CASCADE)
