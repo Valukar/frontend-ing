@@ -4,7 +4,7 @@ from django.http import HttpResponse,JsonResponse
 from rest_framework import generics,permissions,viewsets
 from rest_framework import status
 from .serializers import EmpleadoSerializer,UserSerializer,InventarioVeSerializer,InventarioVeOpSerializer,InventarioRecargaSerializer,PedidoSerializer,RecargaSerializer,DetalleRecargaSerializer 
-from .models import Empleado,InventarioVehiculo,VehiculoOperativos,InventarioRecarga,Pedido,PedidoActivo,Recarga,DetalleRecarga
+from .models import Empleado,InventarioVehiculo,VehiculoOperativos,InventarioRecarga,Pedido,PedidoActivo,Recarga,DetalleRecarga,IngresarVenta,DetalleVenta
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.views.decorators.csrf import csrf_exempt
@@ -12,8 +12,9 @@ from rest_framework.decorators import api_view
 from rest_framework.parsers import JSONParser
 from django.contrib.auth.models import User
 from rest_framework import mixins
-from .serializers import PedidoActivoSerializer,prueba
+from .serializers import PedidoActivoSerializer,prueba,IngresarVentaSerializer,DetalleVentaSerializer
 from django.db.models import Count
+
 
 # Create your views here.
 #def main(request):
@@ -183,40 +184,10 @@ def detallerecarga_inventario(request):
 
 @api_view(['GET'])
 def pruebita(request):
-    from django.db.models import Sum
-    from django.core import serializers
-    from django.db.models.query import QuerySet
-    from django_group_by import GroupByMixin
-    from django.db.models import Count
-
-
-    #s=DetalleRecarga.objects.all().order_by('cantidad').values()
-    #s=DetalleRecarga.objects.get('idProductos')
-    #t=DetalleRecarga.objects.aggregate(num_answers=Count('idProductos'))
-    #t.group_by = ['idProductos']
-    #t=(DetalleRecarga.objects.all().values('idProductos'))
-    
-
-   
-  
-    #results = QuerySet(query=t, model=DetalleRecarga)
-    #results=results.count('idProductos')
-
-    return Response(DetalleRecarga.objects.values('idProductos__NombreProducto','idRecarga__fechaRecarga','idRecarga__IdVehiculo__patente'))
-    from django.db.models import Count
-
-    #Afiliado.objects.order_by('-Nombre')
-    #return Response(serializers.serialize("json",s.))
-    #City.objects.aggregate(Sum('population'))
-    """
-    if request.method == 'GET':
-        snippets = DetalleRecarga.objects.all()
-        serializer = prueba(snippets, many=True)
-        return Response(serializer.data)
-"""
-
-
-
+    return Response(DetalleRecarga.objects.values('idProductos__NombreProducto','idRecarga__fechaRecarga','idRecarga__IdVehiculo__patente').order_by('idRecarga__fechaRecarga'))
+@api_view(['GET'])
+def pruebitados(request):
+    return Response(DetalleVenta.objects.values('idVenta__fechaVenta','idVenta__idVehiculo__patente','idProductos__NombreProducto').order_by('idVenta__fechaVenta'))
 
  
 @api_view(['GET', 'PUT', 'DELETE'])
@@ -294,6 +265,49 @@ def pedido_activo(request):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
+@api_view(['GET', 'POST'])
+def PedidoView(request):
+
+    if request.method == 'GET':
+        snippets = Pedido.objects.all()
+        serializer = PedidoSerializer(snippets, many=True)
+        return Response(serializer.data)
+
+    elif request.method == 'POST':
+        serializer = PedidoSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['GET', 'POST'])
+def IngresarVentaView(request):
+    if request.method == 'GET':
+        snippets = IngresarVenta.objects.all()
+        serializer = IngresarVentaSerializer(snippets, many=True)
+        return Response(serializer.data)
+
+    elif request.method == 'POST':
+        serializer = IngresarVentaSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['GET', 'POST'])
+def DetalleVentaView(request):
+    if request.method == 'GET':
+        snippets = DetalleVenta.objects.all()
+        serializer =DetalleVentaSerializer(snippets, many=True)
+        return Response(serializer.data)
+
+    elif request.method == 'POST':
+        serializer = DetalleVentaSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 

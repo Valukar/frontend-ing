@@ -1,17 +1,14 @@
 from dataclasses import fields
 from rest_framework import serializers
-from .models import Empleado,InventarioVehiculo,VehiculoOperativos
+from .models import Empleado,InventarioVehiculo,VehiculoOperativos,IngresarVenta,DetalleVenta
 from .models import InventarioRecarga,Pedido,PedidoActivo, Recarga,DetalleRecarga
 from django.db.models import Sum
 from django.contrib.auth.models import User
-
-
 
 class EmpleadoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Empleado
         fields='__all__'
-
 
 class InventarioVeSerializer(serializers.ModelSerializer):
     class Meta:
@@ -67,8 +64,6 @@ class PedidoSerializer(serializers.ModelSerializer):
         fields='__all__'
 # autentificador
 
-
-
 class UserSerializer(serializers.ModelSerializer):
     snippets = serializers.PrimaryKeyRelatedField(many=True, queryset=Empleado.objects.all())
 
@@ -88,5 +83,11 @@ class PedidoActivoSerializer(serializers.ModelSerializer):
         fields=("idPedidoActivo","idPedido","idPatente","comentario","direccion","patente","nombre")#"idPedido_comentario"
         depth=0
 
-
-  
+class IngresarVentaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = IngresarVenta
+        fields='__all__'
+class DetalleVentaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = DetalleVenta
+        fields='__all__'
