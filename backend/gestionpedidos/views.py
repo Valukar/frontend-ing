@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.http import HttpResponse,JsonResponse
 from rest_framework import generics,permissions,viewsets
 from rest_framework import status
-from .serializers import EmpleadoSerializer,UserSerializer,InventarioVeSerializer,InventarioVeOpSerializer,InventarioRecargaSerializer,PedidoSerializer,RecargaSerializer,DetalleRecargaSerializer 
+from .serializers import EmpleadoSerializer,UserSerializer,InventarioVeSerializer,InventarioVeOpSerializer,InventarioRecargaSerializer,PedidoSerializer 
 from .models import Empleado,InventarioVehiculo,VehiculoOperativos,InventarioRecarga,Pedido,PedidoActivo,Recarga,DetalleRecarga,IngresarVenta,DetalleVenta
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -12,7 +12,7 @@ from rest_framework.decorators import api_view
 from rest_framework.parsers import JSONParser
 from django.contrib.auth.models import User
 from rest_framework import mixins
-from .serializers import PedidoActivoSerializer,prueba,IngresarVentaSerializer,DetalleVentaSerializer
+from .serializers import PedidoActivoSerializer,prueba,IngresarVentaSerializer,DetalleVentaSerializer,RecargaSerializer,DetalleRecargaSerializer
 from django.db.models import Count
 
 
@@ -154,13 +154,13 @@ def InventarioReView(request):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 @api_view(['GET', 'POST'])
 def recarga_inventario(request):
     if request.method == 'GET':
         snippets = Recarga.objects.all()
         serializer = RecargaSerializer(snippets, many=True)
         return Response(serializer.data)
-
     elif request.method == 'POST':
         serializer = RecargaSerializer(data=request.data)
         if serializer.is_valid():
@@ -173,7 +173,6 @@ def detallerecarga_inventario(request):
         snippets = DetalleRecarga.objects.all()
         serializer = DetalleRecargaSerializer(snippets, many=True)
         return Response(serializer.data)
-
     elif request.method == 'POST':
         serializer = DetalleRecargaSerializer(data=request.data)
         if serializer.is_valid():
@@ -184,12 +183,12 @@ def detallerecarga_inventario(request):
 
 @api_view(['GET'])
 def pruebita(request):
-    return Response(DetalleRecarga.objects.values('idProductos__NombreProducto','idRecarga__fechaRecarga','idRecarga__IdVehiculo__patente').order_by('idRecarga__fechaRecarga'))
+    #DetalleRecarga.objects.values('idProductos__NombreProducto','idRecargas__fechaRecarga','idRecargas__IdVehiculo__patente').order_by('idRecargas__fechaRecarga')
+    return Response(DetalleRecarga.objects.all().values())#cambiar idrecar en front
 @api_view(['GET'])
 def pruebitados(request):
     return Response(DetalleVenta.objects.values('idVenta__fechaVenta','idVenta__idVehiculo__patente','idProductos__NombreProducto').order_by('idVenta__fechaVenta'))
 
- 
 @api_view(['GET', 'PUT', 'DELETE'])
 def InventarioRe_detail(request, pk):
     try:

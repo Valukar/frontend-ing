@@ -1,8 +1,8 @@
 import React, { Component, Fragment} from 'react'
 import { Button, Modal, ModalHeader, ModalBody } from 'reactstrap'
-import NuevaRecarga from './NuevaRecarga'
+import Nuevadetallere from './NuevodetallerRecarga'
 
-class NuevaRecargaModal extends Component {
+class NuevaDetalleRecargaModal extends Component {
     state = {
         modal: false
     }
@@ -28,7 +28,7 @@ class NuevaRecargaModal extends Component {
                 <Modal isOpen={this.state.modal} toggle={this.toggle}>
                     <ModalHeader toggle={this.toggle}>{titulo}</ModalHeader>
                     <ModalBody>
-                        <NuevaRecarga resetState={this.props.resetState} toggle={this.toggle} inventario={this.props.inventario}/>
+                        <Nuevadetallere resetState={this.props.resetState} toggle={this.toggle} recarga={this.props.recarga}/>
                     </ModalBody>
                 </Modal>
             </Fragment>
@@ -36,4 +36,4 @@ class NuevaRecargaModal extends Component {
     }
 }
 
-export default NuevaRecargaModal
+export default NuevaDetalleRecargaModal

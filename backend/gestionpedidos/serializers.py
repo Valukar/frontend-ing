@@ -37,7 +37,7 @@ class DetalleRecargaSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = DetalleRecarga
-        fields=("idDetalleRecarga","idProductos","idRecarga","cantidad")
+        fields=("idDetalleRecarga","idProductos","idRecargas","cantidad")
 
 class prueba(serializers.ModelSerializer):    
    

@@ -21,6 +21,7 @@ urlpatterns = [
 
     path("Inventario/",InventarioReView),
     path("Inventario/<int:pk>",InventarioRe_detail),
+    
     path("Inventario_recarga/",recarga_inventario),
     path("Inventario_detalles_descarga/",detallerecarga_inventario),
 
