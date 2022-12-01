@@ -57,11 +57,6 @@ class DetalleRecarga(models.Model):
     cantidad=models.IntegerField() 
  
 
-class IngresarVenta(models.Model):
-    idVenta=models.AutoField(unique=True,primary_key=True)
-    fechaVenta=models.DateField(blank=True,null=True)
-    idVehiculo=models.ForeignKey(VehiculoOperativos,on_delete=models.CASCADE)
-
 class IngresarVentas(models.Model):
 
     idVenta=models.AutoField(unique=True,primary_key=True)
@@ -94,6 +89,15 @@ class PedidoActivo(models.Model):
     idPatente=models.ForeignKey(VehiculoOperativos,on_delete=models.CASCADE)
 
 
+
+
+
+
+
+class IngresarVenta(models.Model):
+    idVenta=models.AutoField(unique=True,primary_key=True)
+    fechaVenta=models.DateField(blank=True,null=True)
+    idVehiculo=models.ForeignKey(VehiculoOperativos,on_delete=models.CASCADE)
 
 
 """
