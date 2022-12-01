@@ -9,13 +9,14 @@ class Nuevadetallere extends React.Component {
         cantidad: "",
         idProductos: 0,
         idRecargas: "",
+        
 
     };
 
 componentDidMount() {
     if (this.props.recarga) {
         const { idDetalleRecarga, cantidad, idProductos, idRecargas} = this.props.recarga;
-        this.setState({ idDetalleRecarga, cantidad, idProductos,idRecargas })
+        this.setState({ idDetalleRecarga, cantidad, idProductos,idRecargas})
     }
 }
 
@@ -44,7 +45,8 @@ render() {
             <FormGroup>
                 <Label for="idProductos">nombre producto:</Label>
                 <Input type="select" name="idProductos" onChange={this.onChange} value={this.valorDefault(this.state.idProductos)}>
-                     <option  value="9">Galón de 15 kilos</option>
+                <option >Seleccione una opción</option>
+                    <option value="9">Galón de 15 kilos</option>
                     <option value="5">Galón de 45 kilos</option>
                     <option value="7">Galón de 90 kilos</option> 
                 </Input>

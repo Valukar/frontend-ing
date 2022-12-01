@@ -13,7 +13,8 @@ class ListaReporteventas extends Component {
                     <tr>  
                         <th>Fecha</th>
                         <th>Patente</th>
-                        <th>producto</th>
+                        <th>Nombre producto</th>
+                        <th>Cantidad</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -31,6 +32,8 @@ class ListaReporteventas extends Component {
                                 <td>{reporte.idVenta__fechaVenta}</td>
                                 <td>{reporte.idVenta__idVehiculo__patente}</td>
                                 <td>{reporte.idProductos__NombreProducto}</td>
+                                <td>{reporte.cantidadVenta}</td>
+                                
                                 <td align="center">
                                    
                                 </td>

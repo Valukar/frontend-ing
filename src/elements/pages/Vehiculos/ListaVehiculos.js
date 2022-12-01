@@ -33,8 +33,8 @@ class ListaVehiculos extends Component {
                                     <ModificarVehiculoModal vehiculo={vehiculo} resetState={this.props.resetState}/>
                                     &nbsp;&nbsp;
                                     <ConfirmarElimVehiculoModal patente={vehiculo.patente} resetState={this.props.resetState}/>
-                                    &nbsp;&nbsp;
-                                    <AsignarVehiculosModal patente={vehiculo.patente} resetState={this.props.resetState}/>
+                                    {/* &nbsp;&nbsp;
+                                    <AsignarVehiculosModal patente={vehiculo.patente} resetState={this.props.resetState}/> */}
                                 </td>
                             </tr>
                         ))

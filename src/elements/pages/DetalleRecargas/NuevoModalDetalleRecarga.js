@@ -28,7 +28,7 @@ class NuevaDetalleRecargaModal extends Component {
                 <Modal isOpen={this.state.modal} toggle={this.toggle}>
                     <ModalHeader toggle={this.toggle}>{titulo}</ModalHeader>
                     <ModalBody>
-                        <Nuevadetallere resetState={this.props.resetState} toggle={this.toggle} recarga={this.props.recarga}/>
+                        <Nuevadetallere resetState={this.props.resetState} toggle={this.toggle} recargas={this.props.recargas}/>
                     </ModalBody>
                 </Modal>
             </Fragment>
