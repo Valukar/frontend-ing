@@ -1,4 +1,5 @@
 
+from datetime import date
 from email.policy import default
 from enum import unique
 from operator import length_hint
@@ -29,10 +30,7 @@ class Empleado(models.Model):
     nombre=models.CharField(max_length=100,unique=False)
     salario=models.PositiveIntegerField(default=0)
     fechaInicio=models.DateField(blank=True,null=True)
-
-
-
-    
+   
 class InventarioVehiculo(models.Model):
     patente=models.CharField(max_length=8,unique=True,primary_key=True)
     fechaRevision=models.DateField(blank=True)
@@ -41,15 +39,10 @@ class VehiculoOperativos(models.Model):
    idEmpleado=models.ForeignKey(Empleado,on_delete=models.CASCADE)
    patente=models.ForeignKey(InventarioVehiculo,on_delete=models.CASCADE)
 
-#este no
 class Recarga(models.Model):
-
     idRecarga=models.AutoField(unique=True,primary_key=True)
     fechaRecarga=models.DateField(blank=True,null=True)
     IdVehiculo=models.ForeignKey(VehiculoOperativos,on_delete=models.CASCADE)
-
-#este si
-
 
 class InventarioRecarga(models.Model):
     idProducto=models.AutoField(unique=True,primary_key=True)
@@ -60,38 +53,31 @@ class InventarioRecarga(models.Model):
 class DetalleRecarga(models.Model):
     idDetalleRecarga=models.AutoField(unique=True,primary_key=True)
     idProductos=models.ForeignKey(InventarioRecarga,on_delete=models.CASCADE)
-    idRecarga=models.ForeignKey(Recarga,on_delete=models.CASCADE)
+    idRecargas=models.ForeignKey(Recarga,on_delete=models.CASCADE)
     cantidad=models.IntegerField() 
  
-    
-#@receiver(post_save, sender =DetalleRecarga)  
-#def update_stock(sender, instance, **kwargs):
- #   s=InventarioRecarga.objects.get(idProducto=instance.idProductos)
-  #  s.stock=s.stock-instance.cantidad
-   # s.save()
 
-#@receiver(post_save, sender =DetalleRecarga)
-#def update_stock(sender, instance, **kwargs):    
-#    s=InventarioRecarga.objects.get(InventarioRecarga.idProducto)
-#    s.stock = s.stock - instance.cantidad
-
-    #s.save()
 class IngresarVenta(models.Model):
-    idVenta=models.IntegerField(unique=True,primary_key=True)
-    fechaVenta=models.DateField(blank=True)
+    idVenta=models.AutoField(unique=True,primary_key=True)
+    fechaVenta=models.DateField(blank=True,null=True)
     idVehiculo=models.ForeignKey(VehiculoOperativos,on_delete=models.CASCADE)
+
+class IngresarVentas(models.Model):
+
+    idVenta=models.AutoField(unique=True,primary_key=True)
+
+    fechaVenta=models.DateField(default=date.today)
+    idVehiculo=models.ForeignKey(VehiculoOperativos,on_delete=models.CASCADE)
+
 
 class DetalleVenta(models.Model):#trigger
     idDetalleVenta=models.AutoField(unique=True,primary_key=True)     
     cantidadVenta=models.IntegerField()
     idProductos=models.ForeignKey(InventarioRecarga,on_delete=models.CASCADE)
-    idVenta=models.ForeignKey(IngresarVenta,on_delete=models.CASCADE)
+    idVenta=models.ForeignKey(IngresarVentas,on_delete=models.CASCADE)
     subtotal=models.IntegerField()
 
 
-
-
-    
 class Pago(models.Model):
     tipoPago=models.CharField(max_length=100)
     idVenta=models.ForeignKey(IngresarVenta,on_delete=models.CASCADE)
@@ -127,6 +113,19 @@ def remove_from_inventory(sender, instance, **kwargs):
 #sumatoris
 
 
+    
+#@receiver(post_save, sender =DetalleRecarga)  
+#def update_stock(sender, instance, **kwargs):
+ #   s=InventarioRecarga.objects.get(idProducto=instance.idProductos)
+  #  s.stock=s.stock-instance.cantidad
+   # s.save()
+
+#@receiver(post_save, sender =DetalleRecarga)
+#def update_stock(sender, instance, **kwargs):    
+#    s=InventarioRecarga.objects.get(InventarioRecarga.idProducto)
+#    s.stock = s.stock - instance.cantidad
+
+    #s.save()
 
 
 

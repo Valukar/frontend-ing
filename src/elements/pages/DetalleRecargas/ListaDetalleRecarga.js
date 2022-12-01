@@ -1,21 +1,17 @@
-import React, { Component } from 'react'
-import { Table } from 'reactstrap'
+import { Component } from "react"
+import { Table } from "reactstrap"
 
-
-import ConfirmarEliminacionModal from './ConfirmarEliminacionModal'
-import ModificarRecargaModal from './ModificarRecargaModal'
-
-class ListaRecargas extends Component {
+class ListaDetalleRecarga extends Component {
     render() {
         const recargas = this.props.recargas
-        return (
+        return ( 
             <Table>
                 <thead>
                     <tr>
                         {/* <th>Id Detalle Recarga</th> */}
-                        <th>Fecha Recarga</th>
-                        {/* <th>Id recarga</th> */}
-                        <th>id vehiculos</th>
+                        <th>cantidad</th>
+                        <th>id Productos</th>
+                        <th>Id Recargas</th> 
                         <th></th>
                     </tr>
                 </thead>
@@ -28,10 +24,10 @@ class ListaRecargas extends Component {
                         </tr>
                     ) : (
                         recargas.map(recarga => (
-                            <tr key={recarga.idRecarga}>
-                                <td>{recarga.fechaRecarga}</td>
-                                <td>{recarga.IdVehiculo}</td> 
-                    
+                            <tr key={recarga.idDetalleRecarga}>
+                                <td>{recarga.cantidad}</td>
+                                <td>{recarga.idProductos}</td> 
+                                <td>{recarga.idRecargas}</td> 
                                 <td align="center">
                                 </td>
                             </tr>
@@ -43,4 +39,4 @@ class ListaRecargas extends Component {
     }
 }
 
-export default ListaRecargas
+export default ListaDetalleRecarga

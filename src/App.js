@@ -4,6 +4,7 @@ import './App.css';
 import Login from "./elements/pages/Acceso";
 
 import Dashboard from "./elements/pages/Dashboard";
+import DetalleRecarga from "./elements/pages/DetalleRecargas/DetalleRecarga";
 import Empleados from "./elements/pages/Empleados/Empleados";
 import Inventario from "./elements/pages/Inventario/Inventario";
 import Pedidos from "./elements/pages/Pedidos/Pedidos";
@@ -29,6 +30,8 @@ function App() {
           <Route path="/pedidos/activo"element={<PedidoAc/>}/>
           <Route path="/reporte"element={<Reporterecarga/>}/>
           <Route path="/reporte/ventas"element={<ReporteVentas/>}/>
+          <Route path="/Inventario_recarga"element={<Recargas/>}/>
+          <Route path="/detalle_recarga"element={<DetalleRecarga/>}/>
         </Routes>
       </div>
     </Router>

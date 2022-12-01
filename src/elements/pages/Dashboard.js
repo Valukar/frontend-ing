@@ -42,10 +42,7 @@ class Dashboard extends Component {
                                 </button>{' '}
                             </Link>
 
-                            <Link to="/login">
-                                <button class="btn btn-outline-success" type="button">login
-                                </button>{' '}
-                            </Link>
+
                        
                             <Link to="/pedidos/activo">
                                 <button class="btn btn-outline-success" type="button">pedidos activos
@@ -69,14 +66,18 @@ class Dashboard extends Component {
                                     Reportes
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                <a class="dropdown-item" href="/reporte">Reporte Vehículos</a>
+                                <a class="dropdown-item" href="/reporte">Reporte Recargas</a>
                                 <a class="dropdown-item" href="/reporte/ventas">Reporte Ventas</a>
                                 </div>
                             </div>
-                         
 
                             <Link to="/Inventario_recarga">
                                 <button class="btn btn-outline-success" type="button">Recargas
+                                </button>{' '}
+                            </Link>
+                            
+                            <Link to="/detalle_recarga">
+                                <button class="btn btn-outline-success" type="button">detalle recarga
                                 </button>{' '}
                             </Link>
                    

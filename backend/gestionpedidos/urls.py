@@ -3,8 +3,8 @@ from django.contrib import admin
 from django.urls import path,include
 from .views import UserAPIView,user_detail,InventarioVeView,InventarioVe_detail
 from .views import VehiculoOpView,VehiculoOp_detail,InventarioReView,InventarioRe_detail,PedidoView,Pedido_detail,pedido_activo
-from .views import InventarioReView,recarga_inventario,detallerecarga_inventario,pruebita,pruebitados
-from .views import IngresarVentaView,DetalleVentaView
+from .views import InventarioReView,recarga_inventario,detallerecarga_inventario,pruebita,pruebitados,pedido_activo_detail
+from .views import IngresarVentaView,DetalleVentaView,pedidoActivo,vehiculoopera,detalle_venta_detail
 from .viewss import login
 urlpatterns = [
     #path("admin/", admin.site.urls),
@@ -21,20 +21,29 @@ urlpatterns = [
 
     path("Inventario/",InventarioReView),
     path("Inventario/<int:pk>",InventarioRe_detail),
+    
     path("Inventario_recarga/",recarga_inventario),
     path("Inventario_detalles_descarga/",detallerecarga_inventario),
+    path("Inventario_detalles_descarga/<int:pk>",detalle_venta_detail),
 
     path("Pedido/",PedidoView),
     path("Pedido/<int:pk>",Pedido_detail),
     path("pedido_ac/",pedido_activo),
+    path("pedido_ac/<int:pk>",pedido_activo_detail),
+    
 
     path("ingresar_venta/",IngresarVentaView),
     path("detalle_venta/",DetalleVentaView),
 
-
     path("reporte_recargas/",pruebita),
     path("reporte_ventas/",pruebitados),
-  
+    
+    #insercion de datos por tablas
+    path("AgregarPedido/",pedidoActivo),
+    path("Agregarvehiculoopera/",vehiculoopera),
+    
+
+
     #path("", include('api.urls'))
     #path("Empleado/",EmpleadoView.as_view()),
     
