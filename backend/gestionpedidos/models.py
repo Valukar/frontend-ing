@@ -1,4 +1,5 @@
 
+from datetime import date
 from email.policy import default
 from enum import unique
 from operator import length_hint
@@ -55,29 +56,25 @@ class DetalleRecarga(models.Model):
     idRecargas=models.ForeignKey(Recarga,on_delete=models.CASCADE)
     cantidad=models.IntegerField() 
  
-    
-#@receiver(post_save, sender =DetalleRecarga)  
-#def update_stock(sender, instance, **kwargs):
- #   s=InventarioRecarga.objects.get(idProducto=instance.idProductos)
-  #  s.stock=s.stock-instance.cantidad
-   # s.save()
 
-#@receiver(post_save, sender =DetalleRecarga)
-#def update_stock(sender, instance, **kwargs):    
-#    s=InventarioRecarga.objects.get(InventarioRecarga.idProducto)
-#    s.stock = s.stock - instance.cantidad
-
-    #s.save()
 class IngresarVenta(models.Model):
-    idVenta=models.IntegerField(unique=True,primary_key=True)
-    fechaVenta=models.DateField(blank=True)
+    idVenta=models.AutoField(unique=True,primary_key=True)
+    fechaVenta=models.DateField(blank=True,null=True)
     idVehiculo=models.ForeignKey(VehiculoOperativos,on_delete=models.CASCADE)
+
+class IngresarVentas(models.Model):
+
+    idVenta=models.AutoField(unique=True,primary_key=True)
+
+    fechaVenta=models.DateField(default=date.today)
+    idVehiculo=models.ForeignKey(VehiculoOperativos,on_delete=models.CASCADE)
+
 
 class DetalleVenta(models.Model):#trigger
     idDetalleVenta=models.AutoField(unique=True,primary_key=True)     
     cantidadVenta=models.IntegerField()
     idProductos=models.ForeignKey(InventarioRecarga,on_delete=models.CASCADE)
-    idVenta=models.ForeignKey(IngresarVenta,on_delete=models.CASCADE)
+    idVenta=models.ForeignKey(IngresarVentas,on_delete=models.CASCADE)
     subtotal=models.IntegerField()
 
 
@@ -116,6 +113,19 @@ def remove_from_inventory(sender, instance, **kwargs):
 #sumatoris
 
 
+    
+#@receiver(post_save, sender =DetalleRecarga)  
+#def update_stock(sender, instance, **kwargs):
+ #   s=InventarioRecarga.objects.get(idProducto=instance.idProductos)
+  #  s.stock=s.stock-instance.cantidad
+   # s.save()
+
+#@receiver(post_save, sender =DetalleRecarga)
+#def update_stock(sender, instance, **kwargs):    
+#    s=InventarioRecarga.objects.get(InventarioRecarga.idProducto)
+#    s.stock = s.stock - instance.cantidad
+
+    #s.save()
 
 
 
